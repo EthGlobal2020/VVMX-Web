@@ -1,0 +1,237 @@
+<div class="sidebar-menu-inner">	
+	
+	<header class="logo-env">
+		
+		<!-- logo -->
+		<div class="logo">
+			<a href="{:U('Admin/Main/index')}" class="logo-expanded">
+				<img src="__PUBLIC__/Admin/Images/logo@2x.png" width="180" alt="" />
+			</a>
+			
+			<a href="{:U('Admin/Main/index')}" class="logo-collapsed">
+				<img src="__PUBLIC__/Admin/Images/logo-collapsed@2x.png" width="40" alt="" />
+			</a>
+		</div>
+		
+		<!-- This will toggle the mobile menu and will be visible only on mobile devices -->
+		<div class="mobile-menu-toggle visible-xs">
+			<a href="#" data-toggle="user-info-menu">
+				<i class="fa-bell-o"></i>
+				<span class="badge badge-success">7</span>
+			</a>
+			
+			<a href="#" data-toggle="mobile-menu">
+				<i class="fa-bars"></i>
+			</a>
+		</div>
+		
+		<!-- This will open the popup with user profile settings, you can use for any purpose, just be creative -->
+		
+		
+					
+	</header>
+			
+	
+			
+	<ul id="main-menu" class="main-menu">
+		<!-- add class "multiple-expanded" to allow multiple submenus to open -->
+		<!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
+		<!-- <li  class="opened active"> -->
+		<li <in name="action" value="app,newType,productType,adType,messageType,memberType,photoType,androidNavigation,pcNavigation,system,setThumb,setPay,setEmail,delete">class="active opened active"</in>>
+			<a href="javascript:;">
+				<i class="fa-cogs"></i>
+				<span class="title">网站设置</span>
+				<!--<span class="label label-purple pull-right hidden-collapsed">New Items</span>-->
+			</a>
+			<ul>
+				<li <eq name="action" value="system">class="active"</eq>>
+				<a href="{:U('Admin/Config/system')}">
+					<span class="title">基础设置</span>
+				</a>
+				</li>
+				<li <eq name="action" value="app">class="active"</eq>>
+				<a href="{:U('Admin/Config/app')}">
+					<span class="title">功能设置</span>
+				</a>
+				</li>
+				<li <eq name="action" value="sms">class="active"</eq>>
+				<a href="{:U('Admin/Config/sms')}">
+					<span class="title">短信接口设置</span>
+				</a>
+				</li>
+        		<li <eq name="action" value="country">class="active"</eq>>
+				<a href="{:U('Admin/Main/country')}">
+					<span class="title">国家管理</span>
+				</a>
+				</li> 
+<!-- 				<li <eq name="action" value="setPay">class="active"</eq>>
+					<a href="{:U('Admin/Config/setPay')}">
+						<span class="title">支付设置</span>
+					</a>
+				</li> -->
+				<li <eq name="action" value="setEmail">class="active"</eq>>
+					<a href="{:U('Admin/Config/setEmail')}">						
+						<span class="title">邮箱设置</span>
+					</a>
+				</li>
+				<li <eq name="action" value="delete">class="active"</eq>>
+					<a href="{:U('Admin/Config/delete')}">
+						<span class="title">回收站</span>
+					</a>
+				</li>
+			</ul>
+		</li>
+		<li <in name="action" value="member,addMember,upMember">class="active opened active"</in>>
+			<a href="javascript:;">
+				<i class="fa-users"></i>
+				<span class="title">会员管理</span>
+			</a>
+			<ul>
+				<li <eq name="action" value="member">class="active"</eq>>
+					<a href="{:U('Admin/Main/member')}">
+						<span class="title">会员列表</span>
+					</a>
+				</li>
+				<li <eq name="action" value="addMember">class="active"</eq>>
+					<a href="{:U('Admin/Main/addMember')}">
+						<span class="title">添加会员</span>
+					</a>
+				</li>
+			</ul>
+		</li>
+
+		<li <in name="action" value="TiXian">class="active opened active"</in> >
+			<a href="javascript:;">
+				<i class="fa-newspaper-o"></i>
+				<span class="title">提现管理</span>
+			</a>
+			<ul>
+				<li <eq name="action" value="index">class="active"</eq> >
+					<a href="{:u('Admin/TiXian/index')}">
+						<span class="title">提现列表</span>
+					</a>
+				</li>
+				
+			</ul>
+		</li>
+
+		<li <in name="action" value="packageType">class="active opened active"</in>>
+			<a href="javascript:;">
+				<i class="fa-star"></i>
+				<span class="title">等级管理</span>
+			</a>
+			<ul>
+				<li <eq name="action" value="packageType">class="active"</eq>>
+					<a href="{:U('Admin/Main/packageType')}">
+						<span class="title">会员等级</span>
+					</a>
+				</li>
+			</ul>
+		</li>
+		
+		<li <in name="action" value="news,product,ad,photo,message,picture,safety,Cash">class="active opened active"</in> >
+			<a href="javascript:;">
+				<i class="fa-newspaper-o"></i>
+				<span class="title">新闻管理</span>
+			</a>
+			<ul>
+				<li <eq name="action" value="news">class="active"</eq> >
+					<a href="{:u('Admin/Main/news')}">
+						<span class="title">新闻列表</span>
+					</a>
+				</li>
+				
+			</ul>
+		</li>
+		<li <in name="action" value="ad,photo,message,picture,safety,Cash">class="active opened active"</in> >
+			<a href="javascript:;">
+				<i class="fa-comments"></i>
+				<span class="title">留言管理</span>
+			</a>
+			<ul>
+				<li <eq name="action" value="message">class="active"</eq>>
+				<a href="{:u('Admin/Main/message')}">
+					<span class="title">首页反馈</span>
+				</a>
+				</li>
+				<li <eq name="action" value="information">class="active"</eq>>
+				<a href="{:u('Admin/Main/information')}">
+					<span class="title">反馈管理</span>
+				</a>
+				</li>
+			</ul>
+		</li>
+		<li <in name="action" value="order,orderCharts,digitCharts,recharge">class="active opened active"</in>>
+			<a href="javascript:;">
+				<i class="fa-credit-card"></i>
+				<span class="title">充值管理</span>
+			</a>
+			<ul>
+				<li <eq name="action" value="recharge">class="active"</eq>>
+				<a href="{:U('Admin/Order/recharge')}">
+					<span class="title">账户充值</span>
+				</a>
+				</li>
+				<li <eq name="action" value="order">class="active"</eq>>
+					<a href="{:U('Admin/Order/order')}">
+						<span class="title">充值列表</span>
+					</a>
+				</li>
+			</ul>
+		</li>
+	
+		
+	<!-- 		<li <in name="action" value="addRole,role,addNode,node">class="active opened active"</in>>
+			<a href="javascript:;">
+				<i class="linecons-wallet"></i>
+				<span class="title">权限管理</span>
+			</a>
+			<ul>
+				<li <eq name="action" value="addRole">class="active"</eq> >
+				<a href="{:U('Admin/Rbac/addRole')}">
+					<span class="title">添加角色</span>
+				</a>
+				</li>
+				<li <eq name="action" value="role">class="active"</eq> >
+				<a href="{:U('Admin/Rbac/role')}">
+					<span class="title">角色管理</span>
+				</a>
+				</li>
+				<li <eq name="action" value="addNode">class="active"</eq> >
+				<a href="{:U('Admin/Rbac/addNode')}">
+					<span class="title">添加节点</span>
+				</a>
+				</li>
+				<li <eq name="action" value="node">class="active"</eq> >
+				<a href="{:U('Admin/Rbac/node')}">
+					<span class="title">节点管理</span>
+				</a>
+				</li>
+			</ul>
+		</li>  -->
+		<li <in name="action" value="save,admin,addAdmin,clear">class="active opened active"</in>>
+			<a href="javascript:;">
+				<i class="linecons-params"></i>
+				<span class="title">安全与数据</span>
+			</a>
+			<ul>
+				<li <eq name="action" value="admin">class="active"</eq> <eq name="action" value="addAdmin">class="active"</eq>>
+				<a href="{:U('Admin/Data/admin')}">
+					<span class="title">管理员</span>
+				</a>
+				</li>
+				
+				<li <eq name="action" value="clear">class="active"</eq>>
+				<a href="{:U('Admin/Data/clear')}">
+					<span class="title">清除缓存</span>
+				</a>
+				</li>
+				
+				
+			</ul>
+		</li>
+		
+		
+	</ul>
+			
+</div>

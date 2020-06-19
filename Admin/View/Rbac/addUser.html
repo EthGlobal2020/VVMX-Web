@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="UTF-8">
+<meta name="language" content="en">
+<meta name="renderer" content="webkit">
+<link href="__PUBLIC__/Admin/Css/page.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="__PUBLIC__/Public/Css/public.css" />
+<script type="text/javascript" src="__PUBLIC__/Public/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/Js/script.js"></script>
+<title>会游宝--旅行社管理系统</title>
+<script type="text/javascript">
+	$(function(){
+		$('.add-role').click(function(){
+			var obj = $(this).parents('tr').clone();
+			obj.find('.add-role').remove();
+			$('#last').before(obj);
+		}
+		)
+	}
+	)
+</script>
+</head>
+
+<body>
+<div id="header">
+  <div id="content">
+    <div class="left">
+      <div class="logo"><a href="{:U('Admin/Main/index')}"><img src="__PUBLIC__/Admin/Images/logo.jpg" width="198" height="98"></a></div>
+      <ul>
+			<include file="Main:menu"/>
+      </ul>
+    </div>
+    <div class="right"> 
+		<!--登录信息开始-->
+		<div class="headerR">{$data['CompanyName']}&nbsp;&nbsp;&nbsp;&nbsp;最近一次登录时间&nbsp;{$data['LoginTime']}</div>
+		<!--登录信息结束--> 
+		<!--线路管理开始-->
+		<div class="product">
+			<div class="title">
+				权限管理	
+			</div>
+		</div>
+		<!--线路管理结束--> 
+		<!--线路列表开始-->
+		<div class="info_p">
+			<form method="post" action="{:U('Admin/Rbac/addUserHandle')}">		
+					<table class="table">
+						<tr>
+							<td align="right" width='35%'>用户账号：</td>
+							<td>
+								<input type="text" name="username" id="username">&nbsp;<font color="red" id="usernameMsg">*</font>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">密码：</td>
+							<td>
+								<input type="password" name="password">
+							</td>
+						</tr>
+						<tr>
+							 <td align="right">所属角色：</td>
+							 <td>	
+									<select name="role_id[]" id="role_id">
+										<option value="" >请选择角色</option>
+										<foreach name='role' item='v'>
+											<option value="{$v['id']}">{$v.name}({$v.remark})</option>
+										</foreach>
+									</select>
+									<span class="add-role"><a><font color="#56A9DE">添加一个角色</font></a></span>&nbsp;<font color="red">*</font><font color="red" id="role_idMsg"></font>
+							 </td>
+							 
+						</tr>
+						<tr id="last">
+							<td align="center" colspan='2'><input type="submit" value="保存添加"></td>
+						</tr>
+					</table>		
+			</form>		
+		</div>
+		<!--线路列表结束-->
+    </div>
+  </div>
+</div>
+</body>
+</html>

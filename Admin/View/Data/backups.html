@@ -1,0 +1,389 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Language" content="zh-cn">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Xenon Boostrap Admin Panel" />
+	<meta name="author" content="" />
+	
+	<title>后台管理系统</title>
+
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/linecons/css/linecons.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/bootstrap.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-core.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-forms.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-components.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-skins.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/custom.css">
+
+	<script src="__PUBLIC__/Admin/Js/jquery-1.11.1.min.js"></script>
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin/Js/html5shiv.min.js"></script>
+		<script src="__PUBLIC__/Admin/Js/respond.min.js"></script>
+	<![endif]-->
+	
+	
+</head>
+<body class="page-body">
+
+	<div class="settings-pane">
+		<include file="Main:top" />	
+	</div>	
+	<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+			
+		<!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
+		<!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
+		<!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
+		<div class="sidebar-menu toggle-others fixed collapsed">
+			
+			<div class="sidebar-menu-inner">	
+				<include file="Main:left" />
+			</div>
+			
+		</div>
+		
+		<div class="main-content">
+					
+			<!-- User Info, Notifications and Menu Bar -->
+			<include file="Main:title" />
+			<div class="page-title">
+				
+				<div class="title-env">
+					<h1 class="title">数据备份</h1>
+					<p class="description">数据备份是容灾的基础，是指为防止系统出现操作失误或系统故障导致数据丢失，而将全部或部分数据集合<br/>从应用主机的硬盘或阵列复制到其它的存储介质的过程。</p>
+				</div>
+				
+					<div class="breadcrumb-env">
+					
+								<ol class="breadcrumb bc-1">
+									<li>
+							<a href="{:U('Admin/Main/index')}"><i class="fa-home"></i>首页</a>
+						</li>
+								<li>
+						
+										<a href="javascript:;">数据备份</a>
+								</li>
+							<li class="active">
+						
+										<strong>数据备份</strong>
+								</li>
+								</ol>
+								
+				</div>
+					
+			</div>
+			<!-- Table Styles -->
+			<div class="row">
+				<div class="col-md-12">
+				
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Table Styles</h3>
+							
+							<div class="panel-options">
+								<a href="#">
+									<i class="linecons-cog"></i>
+								</a>
+								
+								<a href="#" data-toggle="panel">
+									<span class="collapse-icon">&ndash;</span>
+									<span class="expand-icon">+</span>
+								</a>
+								
+								<a href="#" data-toggle="reload">
+									<i class="fa-rotate-right"></i>
+								</a>
+								
+								<a href="#" data-toggle="remove">
+									&times;
+								</a>
+							</div>
+						</div>
+						
+
+
+						
+						<div class="panel-body panel-border">
+						
+							<div class="row">
+								<div class="col-sm-12">
+								
+									<!-- Table Model 2 -->
+									<strong>Table Model 2</strong>
+									
+									<table class="table table-model-2 table-hover">
+										<thead>
+											<tr>
+												<th>#</th>
+												<th>Name</th>
+												<th>Address</th>
+											</tr>
+										</thead>
+										
+										<tbody>
+											<tr>
+												<td>1</td>
+												<td>Arlind</td>
+												<td>Nushi</td>
+											</tr>
+											
+											<tr>
+												<td>2</td>
+												<td>Art</td>
+												<td>Ramadani</td>
+											</tr>
+											
+											<tr>
+												<td>3</td>
+												<td>Filan</td>
+												<td>Fisteku</td>
+											</tr>
+										</tbody>
+									</table>
+								
+								</div>
+							</div>
+						
+						</div>
+						
+					</div>
+					
+				</div>
+			</div>
+			
+			<!-- Tables and Panels -->
+			<div class="row">
+				<div class="col-md-7">
+				
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Table Inside Panel</h3>
+							
+							<div class="panel-options">
+								<a href="#">
+									<i class="linecons-cog"></i>
+								</a>
+								
+								<a href="#" data-toggle="panel">
+									<span class="collapse-icon">&ndash;</span>
+									<span class="expand-icon">+</span>
+								</a>
+								
+								<a href="#" data-toggle="reload">
+									<i class="fa-rotate-right"></i>
+								</a>
+								
+								<a href="#" data-toggle="remove">
+									&times;
+								</a>
+							</div>
+						</div>
+						
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Name</th>
+									<th>Address</th>
+									<th>Progress</th>
+								</tr>
+							</thead>
+							
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>Arlind</td>
+									<td>Nushi</td>
+									<td class="middle-align">
+										<div class="progress">
+											<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+												<span class="sr-only">20% Complete</span>
+											</div>
+										</div>
+									</td>
+								</tr>
+								
+								<tr>
+									<td>2</td>
+									<td>Art</td>
+									<td>Ramadani</td>
+									<td class="middle-align">
+										<div class="progress">
+											<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" style="width: 92%">
+												<span class="sr-only">92% Complete</span>
+											</div>
+										</div>
+									</td>
+								</tr>
+								
+								<tr>
+									<td>3</td>
+									<td>Filan</td>
+									<td>Fisteku</td>
+									<td class="middle-align">
+										<div class="progress">
+											<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+												<span class="sr-only">70% Complete</span>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					
+				</div>
+				<div class="col-md-5">
+				
+					<div class="panel panel-flat">
+						<div class="panel-heading">
+							<h3 class="panel-title">Flat Panel + Table</h3>
+							
+							<div class="panel-options">
+								<a href="#">
+									<i class="linecons-cog"></i>
+								</a>
+								
+								<a href="#" data-toggle="panel">
+									<span class="collapse-icon">&ndash;</span>
+									<span class="expand-icon">+</span>
+								</a>
+								
+								<a href="#" data-toggle="reload">
+									<i class="fa-rotate-right"></i>
+								</a>
+								
+								<a href="#" data-toggle="remove">
+									&times;
+								</a>
+							</div>
+						</div>
+						
+						<table class="table table-condensed">
+							<thead>
+								<tr>
+									<th width="1%">#</th>
+									<th>Task</th>
+									<th>Progress</th>
+								</tr>
+							</thead>
+							
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>Database Clean-up</td>
+									<td class="middle-align">
+										<div class="progress">
+											<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+												<span class="sr-only">20% Complete</span>
+											</div>
+										</div>
+									</td>
+								</tr>
+								
+								<tr>
+									<td>2</td>
+									<td>Flyer Print</td>
+									<td class="middle-align">
+										<div class="progress">
+											<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" style="width: 92%">
+												<span class="sr-only">92% Complete</span>
+											</div>
+										</div>
+									</td>
+								</tr>
+								
+								<tr>
+									<td>3</td>
+									<td>Brand Identity Design</td>
+									<td class="middle-align">
+										<div class="progress">
+											<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+												<span class="sr-only">70% Complete</span>
+											</div>
+										</div>
+									</td>
+								</tr>
+								
+								<tr>
+									<td>4</td>
+									<td>Website Development</td>
+									<td class="middle-align">
+										<div class="progress">
+											<div class="progress-bar progress-bar-purple" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+												<span class="sr-only">40% Complete</span>
+											</div>
+										</div>
+									</td>
+								</tr>
+								
+								<tr>
+									<td>5</td>
+									<td>Support Tickets</td>
+									<td class="middle-align">
+										<div class="progress">
+											<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+												<span class="sr-only">60% Complete</span>
+											</div>
+										</div>
+									</td>
+								</tr>
+								
+								<tr>
+									<td>6</td>
+									<td>Theme Update</td>
+									<td class="middle-align">
+										<div class="progress">
+											<div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%">
+												<span class="sr-only">30% Complete</span>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					
+				</div>
+			</div>
+			<!-- Main Footer -->
+			<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+			<!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+			<!-- Or class "fixed" to  always fix the footer to the end of page -->
+			<footer class="main-footer sticky footer-type-1">			
+				<include file="Main:foot" />			
+			</footer>
+		</div>
+		
+			
+		<!-- start: Chat Section -->
+		<include file="Main:right" />
+		<!-- end: Chat Section -->
+		
+		
+	</div>
+	
+	
+	
+
+
+
+	<!-- Bottom Scripts -->
+	<script src="__PUBLIC__/Admin/Js/bootstrap.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/TweenMax.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/resizeable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/joinable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-api.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-toggles.js"></script>
+
+
+	<!-- JavaScripts initializations and stuff -->
+	<script src="__PUBLIC__/Admin/Js/xenon-custom.js"></script>
+
+</body>
+</html>

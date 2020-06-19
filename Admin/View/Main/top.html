@@ -1,0 +1,103 @@
+<a href="#" data-toggle="settings-pane" data-animate="true">
+	&times;
+</a>
+
+<div class="settings-pane-inner">
+	
+	<div class="row">
+		
+		<div class="col-md-4">
+			
+			<div class="user-info">
+				
+				<div class="user-image">
+					<a href="javascript:;">
+						<img src="{$data['picture']}" class="img-responsive img-circle" />
+					</a>
+				</div>
+				
+				<div class="user-details">
+					
+					<h3>
+						<a href="{:U('Admin/Data/addAdmin',array('id'=>$data['id'],'p'=>0))}">{$data['realname']}</a>
+						
+						<!-- Available statuses: is-online, is-idle, is-busy and is-offline -->
+						<span class="user-status is-online"></span>
+					</h3>
+					
+					<p class="user-title">信息管理</p>
+					
+					<div class="user-links">
+						<a href="{:U('Admin/Data/addAdmin',array('id'=>$data['id'],'p'=>0))}" class="btn btn-primary">编辑</a>
+						<a href="javascript:;" onclick="javascript:alert('暂无');" class="btn btn-success">升级</a>
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+		
+		<div class="col-md-8 link-blocks-env">
+			
+			<div class="links-block left-sep">
+				<h4>
+					<span>版本说明</span>
+				</h4>
+				
+				<ul class="list-unstyled">
+					<li>
+						<label for="sp-chk4">版本：THE SECOND LIGHT v 2.2</label>
+					</li>
+					<li>
+						<label for="sp-chk2">使用：Thinkphp 3.2.3 框架</label>
+					</li>
+					<li>
+						<label for="sp-chk3">语言：php语言</label>
+					</li>
+					<li>
+						<label for="sp-chk1">注意：上传限制大小 3MB （png,jpeg）</label>
+					</li>
+				</ul>
+			</div>
+			
+			<div class="links-block left-sep">
+				<h4>
+					<a href="{:U('Admin/Main/notice')}">
+						<span>帮助说明</span>
+					</a>
+				</h4>
+				
+				<ul class="list-unstyled">
+					<li>
+						<a href="{:U('Admin/Main/notice')}">
+							<i class="fa-angle-right"></i>
+							如何发布信息？
+						</a>
+					</li>
+					<li>
+						<a href="{:U('Admin/Main/notice')}">
+							<i class="fa-angle-right"></i>
+							如何修改信息？
+						</a>
+					</li>
+					<li>
+						<a href="{:U('Admin/Main/notice')}">
+							<i class="fa-angle-right"></i>
+							如何修改手机版？
+						</a>
+					</li>
+					<li>
+						<a href="{:U('Admin/Main/notice')}">
+							<i class="fa-angle-right"></i>
+							其他
+						</a>
+					</li>
+				</ul>
+			</div>
+			
+		</div>
+		
+	</div>
+
+</div>

@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Language" content="zh-cn">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Xenon Boostrap Admin Panel" />
+	<meta name="author" content="" />
+	
+	<title>后台管理系统</title>
+
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/linecons/css/linecons.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/bootstrap.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-core.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-forms.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-components.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-skins.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/custom.css">
+
+	<script src="__PUBLIC__/Admin/Js/jquery-1.11.1.min.js"></script>
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin/Js/html5shiv.min.js"></script>
+		<script src="__PUBLIC__/Admin/Js/respond.min.js"></script>
+	<![endif]-->
+	
+	
+</head>
+<body class="page-body">
+
+	<div class="settings-pane">
+		<include file="Main:top" />	
+	</div>	
+	<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+			
+		<!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
+		<!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
+		<!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
+		<div class="sidebar-menu toggle-others fixed collapsed">
+			
+			<div class="sidebar-menu-inner">	
+				<include file="Main:left" />
+			</div>
+			
+		</div>
+		
+		<div class="main-content">
+					
+			<!-- User Info, Notifications and Menu Bar -->
+			<include file="Main:title" />
+			<div class="page-title">
+				
+				<div class="title-env">
+					<h1 class="title">订单管理</h1>
+					<p class="description">企业采购部门向供应商发出的定货凭据</p>
+				</div>
+				
+					<div class="breadcrumb-env">
+					
+								<ol class="breadcrumb bc-1">
+									<li>
+							<a href="{:U('Admin/Main/index')}"><i class="fa-home"></i>首页</a>
+						</li>
+								<li>
+						
+										<a href="javascript:;">订单管理</a>
+								</li>
+							<li class="active">
+						
+										<strong>订单管理</strong>
+								</li>
+								</ol>
+								
+				</div>
+					
+			</div>
+			<!-- Table Styles -->
+			<div class="row">
+				<div class="col-md-12">
+				
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">订单管理</h3>
+							
+							<div class="panel-options">
+								<a href="#">
+									<i class="linecons-cog"></i>
+								</a>
+								
+								<a href="#" data-toggle="panel">
+									<span class="collapse-icon">&ndash;</span>
+									<span class="expand-icon">+</span>
+								</a>
+								
+								<a href="#" data-toggle="reload">
+									<i class="fa-rotate-right"></i>
+								</a>
+								
+								<a href="#" data-toggle="remove">
+									&times;
+								</a>
+							</div>
+						</div>
+
+						<div class="panel-body panel-border">
+						
+							<div class="row">
+								<div class="col-sm-12">
+								
+									<!-- Table Model 2 -->
+
+									<table class="table table-bordered table-striped">
+										<thead>
+										<tr>
+											<th>序号</th>
+											<th>会员帐号</th>
+											<th>订单类型</th>
+											<th>充值金额</th>
+											<th>充值时间</th>
+											<th>操作人ID</th>
+											<th>管理</th>
+										</tr>
+										</thead>
+										
+										<tbody>
+										<volist name="OrderInfo" id="mem">
+											<tr>
+												<td>{$mem['id']}</td>
+												<td>
+													{$mem['member_username']}
+												</td>
+												<td>
+													<if condition="$mem['type'] eq 1">注册币充值</if>
+												
+													<if condition="$mem['type'] eq 3">现金币充值</if>
+												
+												</td>
+												<td><in name="mem['type']" value="2,3,4"><label style="color:red;">-{$mem['price']}</label><else/><label style="color:green;">{$mem['price']}</label></in></td>
+												<td>{$mem['addtime']}</td>
+												<td>{$mem['admin_id']?$mem['admin_id']:$mem['user_id']}</td>
+												<td>
+													<a href="{:U('Admin/Order/deleteOrder',array('id'=>$mem['id'],'p'=>$p))}" class="btn btn-info btn-sm btn-icon icon-left" onclick="return confirm('删除后，充值金额将删除，无法找回')">
+														删除
+													</a>
+												</td>
+											</tr>
+										</volist>
+
+										</tbody>
+									</table>
+								
+								</div>
+							</div>
+						
+						</div>
+						
+					</div>
+					
+				</div>
+			</div>
+			<!-- Main Footer -->
+			<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+			<!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+			<!-- Or class "fixed" to  always fix the footer to the end of page -->
+			<footer class="main-footer sticky footer-type-1">			
+				<include file="Main:foot" />			
+			</footer>
+		</div>
+		
+			
+		<!-- start: Chat Section -->
+		<include file="Main:right" />
+		<!-- end: Chat Section -->
+		
+		
+	</div>
+	
+	
+	
+
+
+
+	<!-- Bottom Scripts -->
+	<script src="__PUBLIC__/Admin/Js/bootstrap.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/TweenMax.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/resizeable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/joinable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-api.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-toggles.js"></script>
+
+
+	<!-- JavaScripts initializations and stuff -->
+	<script src="__PUBLIC__/Admin/Js/xenon-custom.js"></script>
+
+</body>
+</html>

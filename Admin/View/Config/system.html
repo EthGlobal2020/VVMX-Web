@@ -1,0 +1,367 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Language" content="zh-cn">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Xenon Boostrap Admin Panel" />
+	<meta name="author" content="" />
+	
+	<title>后台系统 HopeLook 2.2</title>
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/linecons/css/linecons.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/bootstrap.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-core.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-forms.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-components.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-skins.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/custom.css">
+
+	<script src="__PUBLIC__/Admin/Js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="__PUBLIC__/Ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Ueditor/ueditor.all.min.js"> </script>
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin/Js/html5shiv.min.js"></script>
+		<script src="__PUBLIC__/Admin/Js/respond.min.js"></script>
+	<![endif]-->
+	<notempty name="model">
+		<script>
+			$(document).ready(function(){
+				jQuery('#modal-6').modal('show', {backdrop: 'static'});
+				<if condition="$model eq 4">
+					setTimeout(function(){
+						$('#modal-6').modal("hide");
+					},1000); 				
+				</if>				
+			});
+		</script>
+	</notempty>	
+	
+</head>
+<body class="page-body">
+
+	<div class="settings-pane">
+		<include file="Main:top" />		
+	</div>
+	
+	<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+			
+		<!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
+		<!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
+		<!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
+		<div class="sidebar-menu toggle-others fixed collapsed">
+			
+			<div class="sidebar-menu-inner">	
+				<include file="Main:left" />						
+			</div>
+			
+		</div>
+		
+		<div class="main-content">
+					
+			<!-- User Info, Notifications and Menu Bar -->
+			<include file="Main:title" />
+			<div class="page-title">
+				
+				<div class="title-env">
+					<h1 class="title">系统设置</h1>
+					<p class="description">System Set</p>
+				</div>
+				
+					<div class="breadcrumb-env">
+					
+								<ol class="breadcrumb bc-1">
+									<li>
+							<a href="{:U('Admin/Main/index')}"><i class="fa-home"></i>首页</a>
+						</li>
+								<li>
+						
+										<a href="javascript:;">网站设置</a>
+								</li>
+							<li class="active">
+						
+										<strong>系统设置</strong>
+								</li>
+								</ol>
+								
+				</div>
+					
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">系统设置</h3>
+							<div class="panel-options">
+								<a href="#" data-toggle="panel">
+									<span class="collapse-icon">&ndash;</span>
+									<span class="expand-icon">+</span>
+								</a>
+								<a href="#" data-toggle="remove">
+									&times;
+								</a>
+							</div>
+						</div>
+						<div class="panel-body">
+							
+							<form action="{:U('Admin/Config/system')}" method="post" enctype="multipart/form-data" class="form-horizontal">
+																
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="field-3">商城网址</label>
+									
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="field-3"  name="DEFAULT_WEB_SHOP_URL" placeholder="商城网址" value="{$Think.config.DEFAULT_WEB_SHOP_URL}">
+									</div>
+								</div>	
+								<div class="form-group-separator"></div>								
+								<div class="form-group">
+									<label class="col-sm-2 control-label" >网站标题</label>
+									
+									<div class="col-sm-10">
+										<input type="text" class="form-control" name="DEFAULT_WEB_TITLE" placeholder="网站标题" value="{$Think.config.DEFAULT_WEB_TITLE}">
+									</div>
+								</div>
+								
+								<div class="form-group-separator"></div>
+								
+								<div class="form-group">
+									<label class="col-sm-2 control-label" >关键词</label>
+									
+									<div class="col-sm-10">
+										<input type="text" class="form-control" name="DEFAULT_WEB_KEYWORDS" placeholder="关键词" value="{$Think.config.DEFAULT_WEB_KEYWORDS}">
+									</div>
+								</div>
+								
+								<div class="form-group-separator"></div>
+								
+								<div class="form-group">
+									<label class="col-sm-2 control-label">描述</label>
+									
+									<div class="col-sm-10">
+										<input type="text" class="form-control" name="DEFAULT_WEB_DESCRIPTION" placeholder="描述" value="{$Think.config.DEFAULT_WEB_DESCRIPTION}">
+									</div>
+								</div>
+								
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label"></label>
+									<div class="col-sm-10">
+										<img src="{$Think.config.DEFAULT_WEB_LOGO}" style="width:129px;height:79px"/>
+									</div>
+								</div>								
+								<div class="form-group">
+									<label class="col-sm-2 control-label">网站（ Logo ）</label>
+									<div class="col-sm-10">
+										<input type="file" class="form-control" name="DEFAULT_WEB_LOGO" >
+									</div>
+								</div>
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label"></label>
+									<div class="col-sm-10">
+										<img src="{$Think.config.DEFAULT_WEB_LOGIN_IMG}" style="width:129px;height:79px"/>
+									</div>
+								</div>								
+								<div class="form-group">
+									<label class="col-sm-2 control-label">网站登陆背景</label>
+									<div class="col-sm-10">
+										<input type="file" class="form-control" name="DEFAULT_WEB_LOGIN_IMG" >
+									</div>
+								</div>
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">客服邮箱</label>
+
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_USER_EMAIL" placeholder="客服邮箱" value="{$Think.config.DEFAULT_WEB_USER_EMAIL}">
+									</div>
+								</div>
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">联系电话</label>
+
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_TELEPHONE" placeholder="电话" value="{$Think.config.DEFAULT_WEB_TELEPHONE}">
+									</div>
+								</div>
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" ><if condition="$Think.config.DEFAULT_WEB_SET_NOTICE eq 1"><font color="green">公告提示框开启</font><else/>公告提示框关闭</if></label>
+									<div class="col-sm-10">
+										<select name="DEFAULT_WEB_SET_NOTICE"  class="form-control">
+											<option value="0" <if condition="$Think.config.DEFAULT_WEB_SET_NOTICE eq 0">selected</if>>未开启</option>
+											<option value="1" <if condition="$Think.config.DEFAULT_WEB_SET_NOTICE eq 1">selected</if>>已开启</option>
+										</select>
+									</div>	
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" >公告标题</label>
+									
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_NOTICE_TITLE" placeholder="公告标题" value="{$Think.config.DEFAULT_WEB_NOTICE_TITLE}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" >公告时间</label>
+									
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_NOTICE_TIME" placeholder="公告时间" value="{$Think.config.DEFAULT_WEB_NOTICE_TIME}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" >公告内容</label>
+									
+									<div class="col-sm-10">
+										<!--<textarea class="form-control autogrow" name="DEFAULT_WEB_NOTICE" placeholder="公告内容">{$Think.config.DEFAULT_WEB_NOTICE}</textarea>-->
+										
+										<ul class="nav nav-tabs" role="tablist">
+											<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">汉语</a></li>
+											<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">英语</a></li>
+											<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">西班牙语</a></li>
+										  </ul>
+
+										  <!-- Tab panes -->
+										  <div class="tab-content" style="padding-left:0px;padding-right:0px;">
+											<div role="tabpanel" class="tab-pane active" id="home"><script id="editor1" name="DEFAULT_WEB_NOTICE_CN" type="text/plain" style="width:100%;height:300px;">{$Think.config.DEFAULT_WEB_NOTICE_CN|htmlspecialchars_decode}</script></div>
+											<div role="tabpanel" class="tab-pane" id="profile"><script id="editor2" name="DEFAULT_WEB_NOTICE_EN" type="text/plain" style="width:100%;height:300px;">{$Think.config.DEFAULT_WEB_NOTICE_EN|htmlspecialchars_decode}</script></div>
+											<div role="tabpanel" class="tab-pane" id="messages"><script id="editor3" name="DEFAULT_WEB_NOTICE_PR" type="text/plain" style="width:100%;height:300px;">{$Think.config.DEFAULT_WEB_NOTICE_PR|htmlspecialchars_decode}</script></div>
+										  </div>
+									</div>
+								</div>
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" >庆典公告内容</label>
+									
+									<div class="col-sm-10">		
+										<ul class="nav nav-tabs" role="tablist">
+											<li role="presentation" class="active"><a href="#home-1" aria-controls="home-1" role="tab" data-toggle="tab">汉语</a></li>
+											<li role="presentation"><a href="#profile-1" aria-controls="profile-1" role="tab" data-toggle="tab">英语</a></li>
+											<li role="presentation"><a href="#messages-1" aria-controls="messages-1" role="tab" data-toggle="tab">西班牙语</a></li>
+										  </ul>
+
+										  <!-- Tab panes -->
+										  <div class="tab-content" style="padding-left:0px;padding-right:0px;">
+											<div role="tabpanel" class="tab-pane active" id="home-1"><script id="editor4" name="DEFAULT_WEB_CELEBRATE_NOTICE_CN" type="text/plain" style="width:100%;height:300px;">{$Think.config.DEFAULT_WEB_CELEBRATE_NOTICE_CN|htmlspecialchars_decode}</script></div>
+											<div role="tabpanel" class="tab-pane" id="profile-1"><script id="editor5" name="DEFAULT_WEB_CELEBRATE_NOTICE_EN" type="text/plain" style="width:100%;height:300px;">{$Think.config.DEFAULT_WEB_CELEBRATE_NOTICE_EN|htmlspecialchars_decode}</script></div>
+											<div role="tabpanel" class="tab-pane" id="messages-1"><script id="editor6" name="DEFAULT_WEB_CELEBRATE_NOTICE_PR" type="text/plain" style="width:100%;height:300px;">{$Think.config.DEFAULT_WEB_CELEBRATE_NOTICE_PR|htmlspecialchars_decode}</script></div>
+										  </div>									
+										
+									</div>
+								</div>
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" >用户协议内容</label>
+									
+									<div class="col-sm-10">		
+										<ul class="nav nav-tabs" role="tablist">
+											<li role="presentation" class="active"><a href="#home-2" aria-controls="home-2" role="tab" data-toggle="tab">汉语</a></li>
+											<li role="presentation"><a href="#profile-2" aria-controls="profile-2" role="tab" data-toggle="tab">英语</a></li>
+											<li role="presentation"><a href="#messages-2" aria-controls="messages-2" role="tab" data-toggle="tab">西班牙语</a></li>
+										  </ul>
+
+										  <!-- Tab panes -->
+										  <div class="tab-content" style="padding-left:0px;padding-right:0px;">
+											<div role="tabpanel" class="tab-pane active" id="home-2"><script id="editor7" name="DEFAULT_WEB_AGREEMENT_NOTICE_CN" type="text/plain" style="width:100%;height:300px;">{$Think.config.DEFAULT_WEB_AGREEMENT_NOTICE_CN|htmlspecialchars_decode}</script></div>
+											<div role="tabpanel" class="tab-pane" id="profile-2"><script id="editor8" name="DEFAULT_WEB_AGREEMENT_NOTICE_EN" type="text/plain" style="width:100%;height:300px;">{$Think.config.DEFAULT_WEB_AGREEMENT_NOTICE_EN|htmlspecialchars_decode}</script></div>
+											<div role="tabpanel" class="tab-pane" id="messages-2"><script id="editor9" name="DEFAULT_WEB_AGREEMENT_NOTICE_PR" type="text/plain" style="width:100%;height:300px;">{$Think.config.DEFAULT_WEB_AGREEMENT_NOTICE_PR|htmlspecialchars_decode}</script></div>
+										  </div>									
+										
+									</div>
+								</div>
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label"></label>
+									<div class="col-sm-10">
+										<input type="submit" class="btn btn-success" value="提交">
+										<button type="reset" class="btn btn-white">重置</button>
+									</div>
+								</div>
+							</form>
+							
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<!-- Main Footer -->
+			<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+			<!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+			<!-- Or class "fixed" to  always fix the footer to the end of page -->
+			<footer class="main-footer sticky footer-type-1">			
+				<include file="Main:foot" />			
+			</footer>
+		</div>
+		
+			
+		<!-- start: Chat Section -->
+		<include file="Main:right" />
+		<!-- end: Chat Section -->
+		
+		
+	</div>
+	
+	
+	<!-- Modal 6 (Long Modal)-->
+	<div class="modal fade" id="modal-6">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<if condition="$model eq 4">
+					<div>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4>
+							<font color="#2c2e2f"><strong>操作成功</strong></font>
+						</h4>
+					</div>					
+				<elseif condition="$model eq 3"/>
+					<div>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4>
+							<font color="red"><strong>操作失败！</strong></font>
+						</h4>
+					</div>
+				<else/>
+					<div>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4>
+							<font color="red"><strong>未知错误！</strong></font>
+						</h4>
+					</div>						
+				</if>
+			</div>
+		</div>
+	</div>	
+	<!-- Modal 6 (Long Modal)-->	
+
+
+
+	<!-- Bottom Scripts -->
+	<script src="__PUBLIC__/Admin/Js/bootstrap.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/TweenMax.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/resizeable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/joinable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-api.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-toggles.js"></script>
+
+
+	<!-- JavaScripts initializations and stuff -->
+	<script src="__PUBLIC__/Admin/Js/xenon-custom.js"></script>
+	<script type="text/javascript">
+
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var ue1 = UE.getEditor('editor1');
+	var ue2 = UE.getEditor('editor2');
+	var ue2 = UE.getEditor('editor3');
+	var ue2 = UE.getEditor('editor4');
+	var ue2 = UE.getEditor('editor5');
+	var ue2 = UE.getEditor('editor6');
+	var ue2 = UE.getEditor('editor7');
+	var ue2 = UE.getEditor('editor8');
+	var ue2 = UE.getEditor('editor9');
+	
+	</script>
+</body>
+</html>

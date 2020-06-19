@@ -1,0 +1,315 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Language" content="zh-cn">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Xenon Boostrap Admin Panel" />
+	<meta name="author" content="" />
+	
+	<title>后台管理系统</title>
+
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/linecons/css/linecons.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/bootstrap.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-core.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-forms.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-components.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-skins.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/custom.css">
+
+	<script src="__PUBLIC__/Public/Js/jquery-1.7.2.min.js"></script>
+	<script language="javascript" type="text/javascript" src="__PUBLIC__/My97DatePicker/WdatePicker.js"></script>
+	<notempty name="model">
+		<script>
+			$(document).ready(function(){
+				jQuery('#modal-6').modal('show', {backdrop: 'static'});
+				<if condition="$model eq 4">
+					setTimeout(function(){
+						$('#modal-6').modal("hide");
+					},1000); 				
+				</if>		
+			});
+		</script>
+	</notempty>
+	<script>
+		$(document).ready(function() {
+			$(".iswitch").click(function () {
+				location.href = $(this).parent().attr("href");
+			});
+		});
+	</script>
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin/Js/html5shiv.min.js"></script>
+		<script src="__PUBLIC__/Admin/Js/respond.min.js"></script>
+	<![endif]-->
+	
+	
+</head>
+<body class="page-body">
+
+	<div class="settings-pane">
+		<include file="Main:top" />	
+	</div>	
+	<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+			
+		<!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
+		<!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
+		<!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
+		<div class="sidebar-menu toggle-others fixed collapsed">
+			
+			<div class="sidebar-menu-inner">	
+				<include file="Main:left" />
+			</div>
+			
+		</div>
+		
+		<div class="main-content">
+					
+			<!-- User Info, Notifications and Menu Bar -->
+			<include file="Main:title" />
+			<div class="page-title">
+				
+				<div class="title-env">
+					<h1 class="title">优速币价格管理</h1>
+					<p class="description">THE ACL Price</p>
+				</div>
+				
+					<div class="breadcrumb-env">
+					
+								<ol class="breadcrumb bc-1">
+									<li>
+							<a href="{:U('Admin/Main/index')}"><i class="fa-home"></i>首页</a>
+						</li>
+								<li>
+						
+										<a href="javascript:;">ACL</a>
+								</li>
+							<li class="active">
+						
+										<strong>优速币价格管理</strong>
+								</li>
+								</ol>
+								
+				</div>
+					
+			</div>
+			<!-- Table Styles -->
+			<div class="row">
+				<div class="col-md-12">
+				
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">优速币价格管理 <font color="orange">(如果这里没有设置价格 将读取基础设置里的 默认优速币价格)</font></h3>
+							
+							<div class="panel-options">
+								<a href="{:U('Admin/Main/addDigitPrice',array('p'=>$p))}">
+									<i class="fa-eyedropper"  data-toggle="popover" data-trigger="hover" data-placement="top" data-content="点击后出现添加框" data-original-title="添加优速币价"></i>
+									
+								</a>
+								
+								<a href="#" data-toggle="panel">
+									<span class="collapse-icon">&ndash;</span>
+									<span class="expand-icon">+</span>
+								</a>
+								
+								<a href="{:U('Admin/Main/digitPrice')}" >
+									<i class="fa-rotate-right"></i>
+								</a>
+								
+								<a href="#" data-toggle="remove">
+									&times;
+								</a>
+							</div>
+						</div>
+						<div class="panel-body panel-border">
+						
+							<div class="row">
+								<div class="col-sm-12">
+								
+									<!-- Table Model 2 -->
+									<!-- <strong></strong> -->
+
+									<table class="table table-bordered table-striped">
+										<thead>
+										<tr>
+											<th>序号</th>
+											<th>优速币价格</th>
+											<th>时间</th>
+											<!--<th>行情信息</th>-->
+											<!--<th>是否启用</th>-->
+											<th>操作</th>
+										</tr>
+										</thead>
+
+										<tbody class="middle-align">
+
+										<volist name="DigitPriceList" id="type">
+											<tr>
+												<td>{$type['id']}</td>
+												<td>{$type['price']}</td>
+												<td>{$type['date']}</td>
+												<!--<td>open:{$type['open']?$type['open']:0}  low:{$type['low']?$type['low']:0}  high:{$type['high']?$type['high']:0}  close:{$type['close']?$type['close']:0}  volume:{$type['volume']?$type['volume']:0}</td>-->
+												<!--<td>
+													<if condition="$type['status']">
+														<a href="{:U('Admin/Main/statusDigitPrice',array('id'=>$type['id'],'status'=>0,'p'=>$p))}" ><input type="checkbox" checked class="iswitch"></a>
+														<else/>
+														<a href="{:U('Admin/Main/statusDigitPrice',array('id'=>$type['id'],'status'=>1,'p'=>$p))}" ><input type="checkbox" class="iswitch"></a>
+													</if>
+												</td>-->
+												<td>
+													<a href="{:U('Admin/Main/addDigitPrice',array('p'=>$p))}" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="点击后出现添加框" data-original-title="添加新闻分类" class="btn btn-secondary btn-sm btn-icon icon-left">添加</a>
+													<a href="{:U('Admin/Main/addDigitPrice',array('id'=>$type['id'],'p'=>$p))}" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="点击后编辑该新闻分类" data-original-title="编辑新闻分类" class="btn btn-warning btn-sm btn-icon icon-left">编辑</a>
+													<a href="{:U('Admin/Main/deleteDigitPrice',array('id'=>$type['id'],'p'=>$p))}" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="点击后进入回收站" data-original-title="删除该项" class="btn btn-danger btn-sm btn-icon icon-left">删除</a>
+												</td>
+											</tr>
+										</volist>
+
+										</tbody>
+									</table>
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="dataTables_info" ></div>
+										</div>
+										<div style="float:right;">
+											<div class="page">
+												{$page}
+											</div>
+										</div>
+									</div>								
+								</div>
+							</div>
+						
+						</div>
+						
+					</div>
+					
+				</div>
+			</div>
+			
+			<!-- Tables and Panels -->
+			<!-- Main Footer -->
+			<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+			<!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+			<!-- Or class "fixed" to  always fix the footer to the end of page -->
+			<footer class="main-footer sticky footer-type-1">			
+				<include file="Main:foot" />			
+			</footer>
+		</div>
+		
+			
+		<!-- start: Chat Section -->
+		<include file="Main:right" />
+		<!-- end: Chat Section -->
+		
+		
+	</div>
+	
+	
+	<!-- Modal 6 (Long Modal)-->
+	<div class="modal fade" id="modal-6">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<if condition="$model eq 4">
+					<div>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4>
+							<font color="#2c2e2f"><strong>操作成功</strong></font>
+						</h4>
+					</div>					
+				<elseif condition="$model eq 3"/>
+					<div>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4>
+							<font color="red"><strong>操作失败！</strong></font>
+						</h4>
+					</div>
+				<else/>
+				<form action="{:U('Admin/Main/addDigitPrice')}" method="post" >
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">
+						<if condition="$model eq 1">添加优速币价格</if>
+						<if condition="$model eq 2">修改优速币价格</if>
+					</h4>
+				</div>
+
+				<div class="modal-body">
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="control-label">优速币价格</label>
+
+								<input type="text" name="price" class="form-control" value="{$price}" placeholder="优速币价格">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="control-label">时间</label>
+
+								<input type="text" name="date" class="form-control Wdate" value="{$date}" onclick="WdatePicker()" placeholder="优速币价时间" style="height:35px;border:1px solid #ccc;">
+							</div>
+						</div>
+					</div>
+					<div class="form-group-separator"></div>					
+					<div class="row">
+						<div class="col-md-4">
+							
+							<div class="form-group">
+								<label class="control-label">是否开启</label>
+								
+								<div class="radio">
+									<label>
+										<input type="radio" name="status" value="1" checked>
+										开启
+									</label>
+								</div>
+								<!--<div class="radio">
+									<label>
+										<input type="radio" name="status" value="0" <notempty name="status"><if condition="!$status">checked</if></notempty>>
+										关闭
+									</label>
+								</div>-->
+							</div>	
+							
+						</div>
+						
+					</div>
+				
+					
+				</div>
+				
+				<div class="modal-footer">
+					<input type="hidden" name="p" value="{$p}">
+					<button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+					<input type="submit" class="btn btn-success" value="提交">
+				</div>
+				</form>			
+				</if>
+			</div>
+		</div>
+	</div>	
+	<!-- Modal 6 (Long Modal)-->	
+
+
+
+	<!-- Bottom Scripts -->
+	<script src="__PUBLIC__/Admin/Js/bootstrap.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/TweenMax.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/resizeable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/joinable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-api.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-toggles.js"></script>
+	<!-- Imported scripts on this page -->
+	<script src="__PUBLIC__/Admin/Js/toastr/toastr.min.js"></script>
+
+	<!-- JavaScripts initializations and stuff -->
+	<script src="__PUBLIC__/Admin/Js/xenon-custom.js"></script>
+
+</body>
+</html>

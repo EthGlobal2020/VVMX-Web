@@ -1,0 +1,90 @@
+<div id="chat" class="fixed">
+	
+	<div class="chat-inner">
+	
+		
+		<h2 class="chat-header">
+			<a href="#" class="chat-close" data-toggle="chat">
+				<i class="fa-plus-circle rotate-45deg"></i>
+			</a>			
+			快速入口
+			<span class="badge badge-success is-hidden">0</span>
+		</h2>
+		
+
+		
+		
+		<div class="chat-group">
+			<strong>发布</strong>
+			
+			<a href="{:U('Admin/Main/news')}"><span class="user-status is-online"></span> <em>新闻信息</em></a>
+			<a href="{:U('Admin/Main/information')}"><span class="user-status is-online"></span> <em>信息中心管理</em></a>
+
+
+		</div>
+		
+		
+		<div class="chat-group">
+			<strong>管理</strong>
+			
+			<a href="{:U('Admin/Main/member')}"><span class="user-status is-busy"></span> <em>会员管理</em></a>
+			<a href="{:U('Admin/Main/addMember')}"><span class="user-status is-offline"></span> <em>添加会员</em></a>
+			<a href="{:U('Admin/Main/recharge')}"><span class="user-status is-offline"></span> <em>账户充值</em></a>
+			<a href="{:U('Admin/Main/order')}"><span class="user-status is-offline"></span> <em>充值列表</em></a>
+		</div>
+		
+		
+		<div class="chat-group">
+			<strong>其他</strong>			
+			<a href="{:U('Admin/Config/system')}"><span class="user-status is-online"></span> <em>基本设置</em></a>
+			<a href="{:U('Admin/Data/clear')}"><span class="user-status is-online"></span> <em>缓存清理</em></a>
+			<a href="{:U('Admin/Data/save')}"><span class="user-status is-busy"></span> <em>数据备份</em></a>
+			<a href="{:U('Admin/Config/delete')}"><span class="user-status is-busy"></span> <em>回收站</em></a>
+		</div>
+	
+	</div>
+	
+	<!-- conversation template -->
+	<!--
+	<div class="chat-conversation">
+		
+		<div class="conversation-header">
+			<a href="#" class="conversation-close">
+				&times;
+			</a>
+			
+			<span class="user-status is-online"></span>
+			<span class="display-name">Arlind Nushi</span> 
+			<small>Online</small>
+		</div>
+		
+		<ul class="conversation-body">	
+			<li>
+				<span class="user">Arlind Nushi</span>
+				<span class="time">09:00</span>
+				<p>Are you here?</p>
+			</li>
+			<li class="odd">
+				<span class="user">Brandon S. Young</span>
+				<span class="time">09:25</span>
+				<p>This message is pre-queued.</p>
+			</li>
+			<li>
+				<span class="user">Brandon S. Young</span>
+				<span class="time">09:26</span>
+				<p>Whohoo!</p>
+			</li>
+			<li class="odd">
+				<span class="user">Arlind Nushi</span>
+				<span class="time">09:27</span>
+				<p>Do you like it?</p>
+			</li>
+		</ul>
+		
+		<div class="chat-textarea">
+			<textarea class="form-control autogrow" placeholder="Type your message"></textarea>
+		</div>
+		
+	</div>
+	-->
+</div>

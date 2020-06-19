@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Language" content="zh-cn">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Xenon Boostrap Admin Panel" />
+	<meta name="author" content="" />
+	
+	<title>后台管理系统</title>
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/linecons/css/linecons.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/bootstrap.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-core.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-forms.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-components.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-skins.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/custom.css">
+
+	<script src="__PUBLIC__/Admin/Js/jquery-1.11.1.min.js"></script>
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin/Js/html5shiv.min.js"></script>
+		<script src="__PUBLIC__/Admin/Js/respond.min.js"></script>
+	<![endif]-->
+	
+	
+</head>
+<body class="page-body">
+
+	<div class="settings-pane">
+		<include file="Main:top" />
+	</div>
+	
+	<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+			
+		<!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
+		<!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
+		<!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
+		<div class="sidebar-menu toggle-others fixed collapsed">
+			
+			<div class="sidebar-menu-inner">	
+				<include file="Main:left" />						
+			</div>
+			
+		</div>
+		
+		<div class="main-content">
+					
+			<!-- User Info, Notifications and Menu Bar -->
+			<include file="Main:title" />
+			<div class="page-title">
+				
+				<div class="title-env">
+					<h1 class="title">交易中心管理</h1>
+					<p class="description">THE INFORMATION FOR OURS</p>
+				</div>
+				
+				<div class="breadcrumb-env">				
+					<ol class="breadcrumb bc-1">
+						<li>
+							<a href="{:U('Admin/Main/index')}"><i class="fa-home"></i>首页</a>
+						</li>
+						<li class="active">				
+							<strong>交易中心管理</strong>
+						</li>
+					</ol>						
+				</div>
+					
+			</div>
+
+			
+			<!-- Xenon Counter Widget -->
+			<div class="row">
+				<div class="col-sm-3">
+					
+					<div class="xe-widget xe-counter" data-count=".num" data-from="0" data-to="99.9" data-suffix="%" data-duration="2">
+						<div class="xe-icon">
+							<i class="linecons-user"></i>
+						</div>
+						<div class="xe-label">
+							<a href="{:U('Admin/Server/about',array('id'=>1))}"><strong class="num">BITCOIN是什么？</strong></a>
+							<span>BITCOIN是什么？</span>
+						</div>
+					</div>
+					
+				</div>
+				<div class="col-sm-3">
+					
+					<div class="xe-widget xe-counter xe-counter-blue" data-count=".num" data-from="1" data-to="117" data-suffix="k" data-duration="3" data-easing="false">
+						<div class="xe-icon">
+							<i class="linecons-user"></i>
+						</div>
+						<div class="xe-label">
+							<a href="{:U('Admin/Server/about',array('id'=>2))}"><strong class="num">DIGITCOIN是什么？</strong></a>
+							<span>DIGITCOIN是什么？</span>
+						</div>
+					</div>
+				
+				</div>
+				<div class="col-sm-3">
+					
+					<div class="xe-widget xe-counter xe-counter-info" data-count=".num" data-from="1000" data-to="2470" data-duration="4" data-easing="true">
+						<div class="xe-icon">
+							<i class="linecons-user"></i>
+						</div>
+						<div class="xe-label">
+							<a href="{:U('Admin/Server/about',array('id'=>3))}"><strong class="num">客服中心（NEWS）</strong></a>
+							<span>客服中心（NEWS）</span>
+						</div>
+					</div>
+				
+				</div>
+				<div class="col-sm-3">
+					
+					<div class="xe-widget xe-counter xe-counter-red" data-count=".num" data-from="0" data-to="57" data-prefix="-," data-suffix="%" data-duration="5" data-easing="true" data-delay="1">
+						<div class="xe-icon">
+							<i class="linecons-user"></i>
+						</div>
+						<div class="xe-label">
+							<a href="{:U('Admin/Server/about',array('id'=>4))}"><strong class="num">客服中心（FAQ）</strong></a>
+							<span>客服中心（FAQ）</span>
+						</div>
+					</div>
+				
+				</div>
+			</div>
+
+			<!-- Xenon Block Counter Widget -->
+			<div class="row">
+
+
+				<div >
+				
+					<div class="xe-widget xe-counter-block xe-counter-block-purple" data-count=".num" data-from="0" data-to="512" data-duration="3">
+						<div class="xe-upper">
+							
+							<div class="xe-icon">
+								<i class="linecons-calendar"></i>
+							</div>
+							<div class="xe-label">
+								<strong class="num">{$Number?$Number:0}个</strong>
+								<span>未处理现金申请</span>
+							</div>
+							
+						</div>
+						<div class="xe-lower">
+							<div class="border"></div>
+							
+							<span>Result</span>
+							<a href="{:U('Admin/Server/Order')}"><strong><font color="white">现金申请信息</font></strong></a>
+						</div>
+					</div>
+					
+				</div>				
+			</div>
+			
+			
+
+			
+			
+			<!-- Xenon Verical Counter -->
+<!-- 			<div class="row">
+				<div class="col-sm-3">
+					
+					<div class="xe-widget xe-vertical-counter xe-vertical-counter-yellow" data-count=".num" data-from="0" data-to="128.4" data-decimal="," data-suffix="%" data-duration="2.5">
+						<div class="xe-icon">
+							<i class="linecons-videocam"></i>
+						</div>
+						
+						<div class="xe-label">
+							<strong class="num">0,0%</strong>
+							<span>Video Views</span>
+						</div>
+					</div>
+					
+				</div>
+				<div class="col-sm-3">
+					
+					<div class="xe-widget xe-vertical-counter xe-vertical-counter-danger" data-count=".num" data-from="0" data-to="67.9" data-decimal="," data-suffix="%" data-duration="3">
+						<div class="xe-icon">
+							<i class="linecons-doc"></i>
+						</div>
+						
+						<div class="xe-label">
+							<strong class="num">0,0%</strong>
+							<span>Document Downloads</span>
+						</div>
+					</div>
+					
+				</div>
+				<div class="col-sm-3">
+					
+					<div class="xe-widget xe-vertical-counter xe-vertical-counter-white" data-count=".num" data-from="0" data-to="128" data-duration="4">
+						<div class="xe-icon">
+							<i class="linecons-lightbulb"></i>
+						</div>
+						
+						<div class="xe-label">
+							<strong class="num">0</strong>
+							<span>New Topics Published</span>
+						</div>
+					</div>
+					
+				</div>
+				<div class="col-sm-3">
+					
+					<div class="xe-widget xe-vertical-counter xe-vertical-counter-primary" data-count=".num" data-from="0" data-to="442" data-suffix=" TB" data-duration="5">
+						<div class="xe-icon">
+							<i class="linecons-truck"></i>
+						</div>
+						
+						<div class="xe-label">
+							<strong class="num">0</strong>
+							<span>Traffic Delivered</span>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+-->	
+			<!-- Main Footer -->
+			<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+			<!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+			<!-- Or class "fixed" to  always fix the footer to the end of page -->
+			<footer class="main-footer sticky footer-type-1">			
+				<include file="Main:foot" />			
+			</footer>
+		</div>
+		
+			
+		<!-- start: Chat Section -->
+			<include file="Main:right" />
+		<!-- end: Chat Section -->
+		
+		
+	</div>
+	
+	
+	
+
+
+
+
+	<!-- Imported styles on this page -->
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/meteocons/css/meteocons.css">
+
+	<!-- Bottom Scripts -->
+	<script src="__PUBLIC__/Admin/Js/bootstrap.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/TweenMax.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/resizeable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/joinable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-api.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-toggles.js"></script>
+
+
+	<!-- JavaScripts initializations and stuff -->
+	<script src="__PUBLIC__/Admin/Js/xenon-custom.js"></script>
+
+</body>
+</html>

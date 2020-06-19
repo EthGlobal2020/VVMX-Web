@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Language" content="zh-cn">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Xenon Boostrap Admin Panel" />
+	<meta name="author" content="" />
+	
+	<title>后台管理系统</title>
+
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/linecons/css/linecons.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/bootstrap.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-core.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-forms.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-components.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-skins.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/custom.css">
+
+	<script src="__PUBLIC__/Admin/Js/jquery-1.11.1.min.js"></script>
+	<script language="javascript" type="text/javascript" src="__PUBLIC__/My97DatePicker/WdatePicker.js"></script>
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin/Js/html5shiv.min.js"></script>
+		<script src="__PUBLIC__/Admin/Js/respond.min.js"></script>
+	<![endif]-->
+	<notempty name="model">
+		<script>
+			$(document).ready(function(){
+				jQuery('#modal-6').modal('show', {backdrop: 'static'});
+				<if condition="$model eq 4">
+						setTimeout(function(){
+							$('#modal-6').modal("hide");
+						},1000);
+				</if>
+			});
+		</script>
+	</notempty>
+	<script>
+		$(document).ready(function() {
+			$(".iswitch").click(function () {
+				location.href = $(this).parent().attr("href");
+			});
+		});
+	</script>
+</head>
+<body class="page-body">
+
+	<div class="settings-pane">
+		<include file="Main:top" />	
+	</div>	
+	<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+			
+		<!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
+		<!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
+		<!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
+		<div class="sidebar-menu toggle-others fixed collapsed">
+			
+			<div class="sidebar-menu-inner">	
+				<include file="Main:left" />
+			</div>
+			
+		</div>
+		
+		<div class="main-content">
+					
+			<!-- User Info, Notifications and Menu Bar -->
+			<include file="Main:title" />
+			<div class="page-title">
+				
+				<div class="title-env">
+					<h1 class="title">B钱包管理</h1>
+					<p class="description">B钱包</p>
+				</div>
+				
+					<div class="breadcrumb-env">
+					
+								<ol class="breadcrumb bc-1">
+									<li>
+							<a href="{:U('Admin/Main/index')}"><i class="fa-home"></i>首页</a>
+						</li>
+								<li>
+						
+										<a href="javascript:;">B钱包</a>
+								</li>
+							<li class="active">
+						
+										<strong>B钱包管理</strong>
+								</li>
+								</ol>
+								
+				</div>
+					
+			</div>
+			<!-- Table Styles -->
+			<div class="row">
+				<div class="col-md-12">
+
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">B钱包</h3>
+							
+							<div class="panel-options">
+								<a href="">
+									<i class="fa-eyedropper"  data-toggle="popover" data-trigger="hover" data-placement="top" data-content="点击后出现添加框" data-original-title="添加会员"></i>
+								</a>
+								
+								<a href="#" data-toggle="panel">
+									<span class="collapse-icon">&ndash;</span>
+									<span class="expand-icon">+</span>
+								</a>
+								
+								<a href="#" data-toggle="reload">
+									<i class="fa-rotate-right"></i>
+								</a>
+								
+								<a href="#" data-toggle="remove">
+									&times;
+								</a>
+							</div>
+						</div>
+
+						<div class="panel-body panel-border">
+						
+							<div class="row">
+								<div class="col-sm-12">
+									<form method="post" action="">
+										<table class="table table-bordered table-striped">
+											<tbody>
+											<tr>
+												<td>
+													<input name="starttime" value="{$starttime}" placeholder="搜索开始日"  style="width:120px;height:24px;" class="Wdate" onclick="WdatePicker()">
+													<input name="endtime" value="{$endtime}" placeholder="搜索结束日" style="width:120px;height:24px;" class="Wdate" onclick="WdatePicker()">
+													<input type="submit" value="搜索" style="background: #ccc;">
+												</td>
+											</tr>
+											</tbody>
+										</table>
+									</form>
+									<!-- Table Model 2 -->
+
+
+									<table class="table table-bordered table-striped" id="example-2">
+										<thead>
+										<tr>
+											<th class="text-center" width="5%">No.</th>
+											<th class="text-center" width="10%">日期</th>
+											<th class="text-center" width="50%">交易内容</th>
+											<th class="text-center" width="7%">收入</th>
+											<th class="text-center" width="7%">支出</th>
+											<th class="text-center" width="7%">余额</th>
+											<th class="text-center" width="7%">所属会员</th>
+											<th class="text-center" width="7%">备注</th>
+										</tr>
+										</thead>
+
+										<tbody class="middle-align">
+										<volist name="PriceInfoList" id="dcil">
+										<tr>
+											<td class="text-center">{$dcil['id']}</td>
+											<td class="text-center">{$dcil['adddate']}</td>
+											<td>
+												<eq name="dcil['type']" value="1">s币充值</eq>
+												<eq name="dcil['type']" value="2">B币充值</eq>
+												<eq name="dcil['type']" value="3">S币消费</eq>
+												<eq name="dcil['type']" value="4">B币消费</eq>
+												<eq name="dcil['type']" value="5">S币升级</eq>
+												<eq name="dcil['type']" value="6">B币升级</eq>
+												<eq name="dcil['type']" value="7">其他</eq>
+											</td>
+											<td class="text-right"><eq name="dcil['type']" value="1">{$dcil['price']}<else/>0.00</eq></td>
+											<td class="text-right"><neq name="dcil['type']" value="1">{$dcil['price']}<else/>0.00</neq></td>
+											<td class="text-right">{$dcil['s_price']}</td>
+											<th class="text-center" width="7%">
+											<volist name="MemberList" id="ml">
+												<if condition="$ml['id'] eq $dcil['member_id']">{$ml['username']}</if>
+											</volist>
+											</th>
+											<td></td>
+										</tr>
+										</volist>
+										</tbody>
+									</table>
+										<div class="row">
+											<div class="col-xs-6">
+												<div class="dataTables_info" ></div>
+											</div>
+											<div style="float:right;">
+												<div class="page">
+													{$page}
+												</div>
+											</div>
+										</div>
+
+								
+								</div>
+							</div>
+						
+						</div>
+						
+					</div>
+					
+				</div>
+			</div>
+
+			<!-- Main Footer -->
+			<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+			<!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+			<!-- Or class "fixed" to  always fix the footer to the end of page -->
+			<footer class="main-footer sticky footer-type-1">			
+				<include file="Main:foot" />			
+			</footer>
+		</div>
+		
+			
+		<!-- start: Chat Section -->
+		<include file="Main:right" />
+		<!-- end: Chat Section -->
+		
+		
+	</div>
+
+
+	<!-- Modal 6 (Long Modal)-->
+	<div class="modal fade" id="modal-6">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<if condition="$model eq 4">
+					<div>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4>
+							<font color="#2c2e2f"><strong>操作成功</strong></font>
+						</h4>
+					</div>
+					<else/>
+					<div>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4>
+							<font color="red"><strong>操作失败！</strong></font>
+						</h4>
+					</div>
+				</if>
+			</div>
+		</div>
+	</div>
+	<!-- Modal 6 (Long Modal)-->
+
+
+
+	<!-- Bottom Scripts -->
+	<script src="__PUBLIC__/Admin/Js/bootstrap.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/TweenMax.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/resizeable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/joinable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-api.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-toggles.js"></script>
+
+
+	<!-- JavaScripts initializations and stuff -->
+	<script src="__PUBLIC__/Admin/Js/xenon-custom.js"></script>
+
+</body>
+</html>

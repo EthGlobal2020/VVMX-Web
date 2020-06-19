@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Language" content="zh-cn">
+	
+	<meta name="description" content="Xenon Boostrap Admin Panel" />
+	<meta name="author" content="" />
+	
+	<title>后台管理系统</title>
+
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/linecons/css/linecons.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/bootstrap.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-core.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-forms.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-components.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-skins.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/custom.css">
+
+	<script src="__PUBLIC__/Admin/Js/jquery-1.11.1.min.js"></script>
+	<script src="__PUBLIC__/Public/Js/clipboard.min.js"></script>
+	<notempty name="model">
+		<script>
+			$(document).ready(function(){
+				jQuery('#modal-6').modal('show', {backdrop: 'static'});
+				<if condition="$model eq 4">
+						setTimeout(function(){
+							$('#modal-6').modal("hide");
+						},1000);
+				</if>
+			});
+		</script>
+	</notempty>
+	<script>
+		$(document).ready(function() {
+			$(".iswitch").click(function () {
+				location.href = $(this).parent().attr("href");
+			});
+
+
+			var clipboard = new ClipboardJS('.btn-copy');
+
+			clipboard.on('success', function(e) {
+				alert("已复制");
+			});
+
+		});
+	</script>
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin/Js/html5shiv.min.js"></script>
+		<script src="__PUBLIC__/Admin/Js/respond.min.js"></script>
+	<![endif]-->
+	
+	
+</head>
+<body class="page-body">
+
+	<div class="settings-pane">
+		<include file="Main:top" />	
+	</div>	
+	<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+			
+		<!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
+		<!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
+		<!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
+		<div class="sidebar-menu toggle-others fixed collapsed">
+			
+			<div class="sidebar-menu-inner">	
+				<include file="Main:left" />
+			</div>
+			
+		</div>
+		
+		<div class="main-content">
+					
+			<!-- User Info, Notifications and Menu Bar -->
+			<include file="Main:title" />
+			<div class="page-title">
+				
+				<div class="title-env">
+					<h1 class="title">提现管理</h1>
+					<p class="description"></p>
+				</div>
+				
+					<div class="breadcrumb-env">
+					
+								<ol class="breadcrumb bc-1">
+									<li>
+							<a href="{:U('Admin/Main/index')}"><i class="fa-home"></i>首页</a>
+						</li>
+								<li>
+						
+										<a href="javascript:;">提现管理</a>
+								</li>
+							<li class="active">
+						
+										<strong>提现管理</strong>
+								</li>
+								</ol>
+								
+				</div>
+					
+			</div>
+			<!-- Table Styles -->
+			<div class="row">
+				<div class="col-md-12">
+				
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">提现申请列表</h3>
+							
+							<div class="panel-options">
+
+							
+								
+								<a href="#" data-toggle="remove">
+									&times;
+								</a>
+							</div>
+						</div>
+
+						<div class="panel-body panel-border">
+						
+							<div class="row">
+								<div class="col-sm-12">
+								
+									<!-- Table Model 2 -->
+									<!-- <strong>Table Model 2</strong> -->
+									<table class="table table-bordered table-striped" id="example-2">
+										<thead>
+										<tr>
+											<th>提现用户</th>
+											<th>提现方式</th>
+											<th>提现数额</th>
+											<th>手续费</th>
+											<th>实际到账</th>
+											<th>申请时间</th>
+											<th>状态</th>
+											<th>操作</th>
+										</tr>
+										</thead>
+
+										<tbody class="middle-align">
+
+										<volist name="list_data" id="ne">
+											<tr>
+												
+											
+												<td>{$ne['username']}</td>
+												<td>
+														<if condition="$ne['tx_type'] eq 1">
+															提现分红币
+														<else/>
+															提现奖金币
+														</if>
+												</td>
+												<td>{$ne['money_line']}</td>
+												<td>{$ne['fee']}</td>
+												<td style="color:red;">{$ne['money_line']-$ne['fee']}</td>
+												<td>{$ne['addtime']|date="Y-m-d H:i",###}</td>
+												<td>
+														<switch name="ne['tx_state']">
+																<case value="0">待处理</case>
+																<case value="1">已同意</case>
+																<case value="2">已拒绝</case>
+																<default />default
+														</switch>
+												</td>
+												<td>
+														<if condition="$ne['tx_state'] eq 0">
+															   
+																<a href="#" data-id="{$ne['tixian_id']}" data-state="1" class="btn btn-secondary btn-sm btn-icon icon-left btn_shen" data-msg="确定已经通过此提现申请？">已通过</a>
+																<a href="#" data-id="{$ne['tixian_id']}" data-state="2" class="btn btn-danger btn-sm btn-icon icon-left btn_shen" data-msg="确定拒绝此提现申请？">已拒绝</a>
+																
+														</if>
+														<a href="#" class="btn btn-warning btn-sm btn-icon icon-left" onclick="alert('{$ne['realname']}')">查看收款地址</a>
+														<a href="#" class="btn  btn-sm btn-icon icon-right btn-copy" data-clipboard-text="{$ne['realname']}">复制</a>
+												</td>
+											</tr>
+										</volist>
+
+										</tbody>
+									</table>
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="dataTables_info" ></div>
+										</div>
+										<div style="float:right;">
+											<div class="page">
+												{$page}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						
+						</div>
+						
+					</div>
+					
+				</div>
+			</div>
+
+			<!-- Main Footer -->
+			<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+			<!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+			<!-- Or class "fixed" to  always fix the footer to the end of page -->
+			<footer class="main-footer sticky footer-type-1">			
+				<include file="Main:foot" />			
+			</footer>
+		</div>
+		
+			
+		<!-- start: Chat Section -->
+		<include file="Main:right" />
+		<!-- end: Chat Section -->
+		
+		
+	</div>
+
+
+	<!-- Modal 6 (Long Modal)-->
+	<div class="modal fade" id="modal-6">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<if condition="$model eq 4">
+					<div>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4>
+							<font color="#2c2e2f"><strong>操作成功</strong></font>
+						</h4>
+					</div>
+					<else/>
+					<div>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4>
+							<font color="red"><strong>操作失败！</strong></font>
+						</h4>
+					</div>
+				</if>
+			</div>
+		</div>
+	</div>
+	<!-- Modal 6 (Long Modal)-->
+
+
+
+	<!-- Bottom Scripts -->
+	<script src="__PUBLIC__/Admin/Js/bootstrap.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/TweenMax.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/resizeable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/joinable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-api.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-toggles.js"></script>
+
+
+	<!-- JavaScripts initializations and stuff -->
+	<script src="__PUBLIC__/Admin/Js/xenon-custom.js"></script>
+
+	<script>
+		$(document).ready(function(){
+			$(".btn_shen").click(function(){
+                if(confirm($(this).attr("data-msg"))){
+                    $.post('{:U('Admin/TiXian/shenhe')}',{id:$(this).attr("data-id"),state:$(this).attr("data-state")},function(data){
+                        alert("操作成功！");
+                        location.href='{:U('Admin/TiXian/index')}';
+                    },'json');
+                }
+            });
+		});
+	</script>
+</body>
+</html>

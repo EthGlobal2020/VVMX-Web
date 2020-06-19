@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Language" content="zh-cn">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Xenon Boostrap Admin Panel" />
+	<meta name="author" content="" />
+	
+	<title>后台管理系统</title>
+
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/linecons/css/linecons.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/bootstrap.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-core.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-forms.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-components.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-skins.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/custom.css">
+
+	<script src="__PUBLIC__/Public/Js/jquery-1.7.2.min.js"></script>
+	<script language="javascript" type="text/javascript" src="__PUBLIC__/My97DatePicker/WdatePicker.js"></script>
+
+	<notempty name="model">
+		<script>
+			$(document).ready(function(){
+				jQuery('#modal-6').modal('show', {backdrop: 'static'});
+				<if condition="$model eq 4">
+					setTimeout(function(){
+						$('#modal-6').modal("hide");
+					},1000); 				
+				</if>		
+			});
+		</script>
+	</notempty>
+	<script>
+		$(document).ready(function() {
+			$(".iswitch").click(function () {
+				location.href = $(this).parent().attr("href");
+			});
+		});
+	</script>
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin/Js/html5shiv.min.js"></script>
+		<script src="__PUBLIC__/Admin/Js/respond.min.js"></script>
+	<![endif]-->
+	
+	
+</head>
+<body class="page-body">
+
+	<div class="settings-pane">
+		<include file="Main:top" />	
+	</div>	
+	<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+			
+		<!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
+		<!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
+		<!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
+		<div class="sidebar-menu toggle-others fixed collapsed">
+			
+			<div class="sidebar-menu-inner">	
+				<include file="Main:left" />
+			</div>
+			
+		</div>
+		
+		<div class="main-content">
+					
+			<!-- User Info, Notifications and Menu Bar -->
+			<include file="Main:title" />
+			<div class="page-title">
+				
+				<div class="title-env">
+					<h1 class="title">拆分</h1>
+					<p class="description">THE split</p>
+				</div>
+				
+					<div class="breadcrumb-env">
+					
+								<ol class="breadcrumb bc-1">
+									<li>
+							<a href="{:U('Admin/Main/index')}"><i class="fa-home"></i>首页</a>
+						</li>
+								<li>
+						
+										<a href="javascript:;">拆分设置</a>
+								</li>
+							<li class="active">
+						
+										<strong>拆分管理</strong>
+								</li>
+								</ol>
+								
+				</div>
+					
+			</div>
+			<!-- Table Styles -->
+			<div class="row">
+				<div class="col-md-12">
+				
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">拆分管理</h3>
+							
+							<div class="panel-options">
+								
+								
+								<a href="#" data-toggle="panel">
+									<span class="collapse-icon">&ndash;</span>
+									<span class="expand-icon">+</span>
+								</a>
+								
+								<a href="{:U('Admin/Main/split')}" >
+									<i class="fa-rotate-right"></i>
+								</a>
+								
+								<a href="#" data-toggle="remove">
+									&times;
+								</a>
+							</div>
+						</div>
+						<div class="panel-body panel-border">
+						
+							<div class="row">
+								<div class="col-sm-12">
+									<table class="table table-bordered table-striped">
+										<tbody>
+										<tr>
+											<td>总共拆分次数：{$count}</td>
+											<td>
+												<a type="reset" href="{:U('Admin/Main/split_digit',array('p'=>$p))}" data-toggle="popover" data-trigger="hover" class="btn btn-orange" >拆分</a>
+											</td>
+										</tr>
+										</tbody>
+									</table>								
+									<!-- Table Model 2 -->
+									<!-- <strong></strong> -->
+
+									<table class="table table-bordered table-striped">
+										<thead>
+										<tr>
+											<th style="width:10%;">序号</th>
+											<th style="width:15%;">拆分前总股数</th>
+											<th style="width:15%;">拆分倍数</th>
+											<th style="width:15%;">拆分价格</th>
+											<th style="width:15%;">拆分后价格</th>
+											<th style="width:10%;">拆分日期</th>
+											<th style="width:10%;">拆分后总股数</th>
+											<th style="width:10%;">状态</th>
+										</tr>
+										</thead>
+
+										<tbody class="middle-align">
+											
+										<volist name="SplitList" id="type">
+											<tr>
+												<td>{$type['id']}</td>
+												<td>{$type['old_all_share']}</td>
+												<td>{$type['split_double']}</td>
+												<td>{$type['split_price']}</td>
+												<td>{$type['split_new_price']}</td>
+												<td>{$type['adddate']}</td>
+												<td>{$type['new_all_share']}</td>
+												<td>
+													第{$type['id']}次拆分
+												</td>
+											</tr>
+										</volist>
+											<tr>
+												<td>0</td>
+												<td>{$Think.config.DEFAULT_WEB_OLD_SHARE}</td>
+												<td>---</td>
+												<td>---</td>
+												<td>---</td>
+												<td>---</td>
+												<td>{$Think.config.DEFAULT_WEB_NEW_SHARE}</td>
+												<td>
+													股权配送
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="dataTables_info" ></div>
+										</div>
+										<div style="float:right;">
+											<div class="page">
+												{$page}
+											</div>
+										</div>
+									</div>								
+								</div>
+							</div>
+						
+						</div>
+						
+					</div>
+					
+				</div>
+			</div>
+			
+			<!-- Tables and Panels -->
+			<!-- Main Footer -->
+			<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+			<!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+			<!-- Or class "fixed" to  always fix the footer to the end of page -->
+			<footer class="main-footer sticky footer-type-1">			
+				<include file="Main:foot" />			
+			</footer>
+		</div>
+		
+			
+		<!-- start: Chat Section -->
+		<include file="Main:right" />
+		<!-- end: Chat Section -->
+		
+		
+	</div>
+	
+	
+	<!-- Modal 6 (Long Modal)-->
+	<div class="modal fade" id="modal-6">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<if condition="$model eq 4">
+					<div>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4>
+							<font color="#2c2e2f"><strong>操作成功</strong></font>
+						</h4>
+					</div>					
+				<elseif condition="$model eq 3"/>
+					<div>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4>
+							<font color="red"><strong>操作失败！</strong></font>
+						</h4>
+					</div>
+				<else/>
+				<form action="{:U('Admin/Main/split_share')}"  enctype="multipart/form-data" method="post" >
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">
+						拆分管理
+					</h4>
+				</div>
+
+				<div class="modal-body">
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="control-label">拆分前总股数</label>
+								
+								<input type="text" name="old_all_share" class="form-control" value="{$old_all_share}" placeholder="拆分前总股数">
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="control-label">拆分倍数</label>
+
+								<input type="text" name="split_double" class="form-control" value="{$split_double}" placeholder="拆分倍数">
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							
+							<div class="form-group">
+								<label class="control-label">拆分价格</label>
+								
+								<input type="text" class="form-control" name="split_price" value="{$split_price}" placeholder="拆分价格">
+							</div>	
+							
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-6">
+							
+							<div class="form-group">
+								<label class="control-label">拆分后价格</label>
+								
+								<input type="text" class="form-control" name="split_new_price" value="{$split_new_price}" placeholder="拆分后价格">
+							</div>	
+							
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-6">
+							
+							<div class="form-group">
+								<label class="control-label">拆分日期</label>
+								
+								<input type="text" class="form-control Wdate" name="adddate" value="{$adddate}" onclick="WdatePicker()" style="height:35px;border:1px solid #ccc;" placeholder="拆分日期">
+							</div>	
+							
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-6">
+							
+							<div class="form-group">
+								<label class="control-label">拆分后总股数</label>
+								
+								<input type="text" class="form-control" name="new_all_share" value="{$new_all_share}" placeholder="拆分后总股数">
+							</div>	
+							
+						</div>
+					</div>			
+					
+				</div>
+				
+				<div class="modal-footer">
+					<input type="hidden" name="p" value="{$p}">
+					<button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+					<input type="submit" class="btn btn-success" value="提交">
+				</div>
+				</form>			
+				</if>
+			</div>
+		</div>
+	</div>	
+	<!-- Modal 6 (Long Modal)-->	
+
+
+
+	<!-- Bottom Scripts -->
+	<script src="__PUBLIC__/Admin/Js/bootstrap.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/TweenMax.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/resizeable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/joinable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-api.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-toggles.js"></script>
+	<!-- Imported scripts on this page -->
+	<script src="__PUBLIC__/Admin/Js/toastr/toastr.min.js"></script>
+
+	<!-- JavaScripts initializations and stuff -->
+	<script src="__PUBLIC__/Admin/Js/xenon-custom.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Xenon Boostrap Admin Panel" />
+	<meta name="author" content="" />
+	
+	<title>后台管理系统</title>
+
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/linecons/css/linecons.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/bootstrap.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-core.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-forms.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-components.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-skins.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/custom.css">
+
+	<script src="__PUBLIC__/Admin/Js/jquery-1.11.1.min.js"></script>
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin/Js/html5shiv.min.js"></script>
+		<script src="__PUBLIC__/Admin/Js/respond.min.js"></script>
+	<![endif]-->
+	
+	
+</head>
+<body class="page-body">
+
+	<div class="settings-pane">
+		<include file="Main:top" />
+	</div>
+	<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+			
+		<!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
+		<!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
+		<!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
+		<div class="sidebar-menu toggle-others fixed collapsed">
+
+			<div class="sidebar-menu-inner">
+				<include file="Main:left" />
+			</div>
+		</div>
+		
+		<div class="main-content">
+					
+			<!-- User Info, Notifications and Menu Bar -->
+			<include file="Main:title" />
+			<div class="page-title">
+				
+				<div class="title-env">
+					<h1 class="title">帮助中心</h1>
+					<p class="description">帮助，指以出钱、出力或出主意的方式相助别人。</p>
+				</div>
+				
+					<div class="breadcrumb-env">
+					
+								<ol class="breadcrumb bc-1">
+									<li>
+							<a href="{:U('Admin/Main/Index')}"><i class="fa-home"></i>首页</a>
+						</li>
+								<li>
+						
+										<a href="extra-gallery.html">帮助中心</a>
+								</li>
+							<li class="active">
+						
+										<strong>帮助</strong>
+								</li>
+								</ol>
+								
+				</div>
+					
+			</div>
+			
+			
+			<div class="row">
+				<div class="col-md-3">
+				
+					<div id="toc"></div>
+					
+				</div>
+				
+				<div class="col-md-9">
+					
+					<div class="tocify-content">
+						
+						<h2 class="no-top-margin">怎样注册成为用户</h2>
+						
+						<p>首先，在任意页面的上部点击“注册”，跳转到注册新用户的页面</p>
+						<p>按照提示填写好个人资料，阅读并同意服务条款后点击“同意服务条款并注册”，在注册资料填写正确的前提下，会提示您注册成功。</p>
+						<p> 注册成为用户后，可以直接进行身份认证，可以获得相应的积分和信用。</p>
+						<br />
+						
+						<h2>怎么发布信息</h2>
+
+						<p>登录到网站首页</p>
+						<p>接着点击左侧的“发布信息”</p>
+						<p>其次选择你需要发布信息的分类</p>
+						<p>最后点击“马上发布”就可以了。</p>
+							<br />
+							<h3 class="h4">拼车防骗指南</h3>
+
+								<p>1，要确认好拼车人信息。详细记录拼车者 姓名、年龄、身份证、个人及家庭联系方式等，最好有认识的人一起拼车。</p>
+								<p>2，与乘客约好出发时间，出发前1天最好给乘客通一次电话提醒对方。</p>
+								<p>3，要明确拼车所需的费用。尤其是一旦发生交通违章造成罚款的分担，以及车辆发生问题所带来的维修费用的承担。</p>
+								<p>4 ，要和乘客明确是上车前支付还是上车后支付，还应明确额外费用的支付方式。</p>
+								<p>5，合理规划时间，总路程不宜超过十小时，不走夜路。 不要疲劳驾驶，同时保管好个人财物。</p>
+								<p>6，车主和同车人应分别将了解到的对方信息发送给至少一名亲友，以备出现问题后联系使用，并有意让对方知道这个情况。</p>
+								<p>7，事先确定好关于吸烟等细节的规则,特别是有女性和小孩在场的时候。</p>
+								<p>8，签协议和买保险是非常有必要的。</p>
+					
+							<br />
+							
+							<h3 class="h4">违法信息的种类</h3>
+
+						<p>1. 淫秽色情、低俗类</p>
+						<p>1）直接暴露和描写人体性部位的内容；</p>
+						<p>2）表现或隐晦表现性行为、具有挑逗性或者侮辱性的内容；</p>
+						<p>3）以带有性暗示、性挑逗的语言描述性行为、性过程、性方式的内容；</p>
+						<p>4）全身或者隐私部位未着衣物，仅用肢体掩盖隐私部位的内容；</p>
+						<p>5）带有侵犯个人隐私性质的走光、偷拍、漏点等内容；</p>
+						<p>6）以庸俗和挑逗性标题吸引点击的内容；</p>
+						<p>7）相关部门禁止传播的色情和有伤社会风化的文字、音视频内容，包括一些电影的删节片段；</p>
+						<p>8）传播一夜情、换妻、性虐待等的有害信息；</p>
+						<p>9）情色动漫；</p>
+						<p>10）宣扬暴力、恶意谩骂、侮辱他人等的内容；</p>
+						<p>11）非法性药品广告和性病治疗广告等相关内容；</p>
+						<p>12）恶意传播侵害他人隐私的内容；</p>
+						<p>13）推介淫秽色情网站和网上低俗信息的链接、图片、文字等内容；</p>
+						<p>14）提供色情视频聊天。</p>
+						<p>2. 违禁品类</p>
+						<p>毒品、迷幻药、肉毒素、兴奋剂、三唑仑、蒙汗药等、枪支、爆炸类物品、弓弩、原子弹制作等武器类信息、代考、出售考试答案、办假证、代开发票、假钞、手机窃听器、隐形耳机、针孔摄像机等国家禁止出售贩卖产品 、警用或军用等器械。</p>
+						<p>3. 敏感信息类</p>
+						<p>违背《中华人民共和国宪法》和《全国人大常委会关于维护互联网安全的决定》、《互联网信息 服务管理办法》所明文严禁的信息以及其它法律法规明文禁止传播的各类信息。</p>
+						<p>《互联网信息服务管理办法》所严禁的九类信息是：</p>
+						<p>1) 反对宪法所确定的基本原则的；</p>
+						<p>2) 危害国家安全，泄露国家秘密，颠覆国家政权，破坏国家统一的；</p>
+						<p>3) 损害国家荣誉和利益的；</p>
+						<p>4) 煽动民族仇恨、民族歧视，破坏民族团结的；</p>
+						<p>5) 破坏国家宗教政策，宣扬邪教和封建迷信的；</p>
+						<p>6) 散布谣言，扰乱社会秩序，破坏社会稳定的；</p>
+						<p>7) 散布淫秽、色情、赌博、暴力、凶杀、恐怖或者教唆犯罪的；</p>
+						<p>8) 侮辱或者诽谤他人，侵害他人合法权益的；</p>
+						<p>9) 含有法律、行政法规禁止的其它内容的。（例如：恶意中伤、攻击国家领导人）制造或散播谣言、泄漏国家机密信息等。</p>
+						<p>4. 私服、外挂类</p>
+						<p>5. 网络赌博类，如六合彩、网络赌球等</p>
+						<p>6. 钓鱼网站和网络诈骗类</p>
+						<p>7. 未备案网站类</p>
+						<p>1）未获得非经营性网站ICP备案；</p>
+						<p>2）未办理经营性网站ICP许可证；</p>
+						<p>3）未做网警备案；</p>
+						<p>4）虚假备案、伪造或假冒开办单位等违法违规的行为；</p>
+						<p>8. 非法行医售药类</p>
+						<p>违法发布医疗保健信息、贩卖虚假药品、虚假宣传、性广告与未获得医药类前置审批、成人用品、非法涉性等。</p>
+						<p>9. 法轮功</p>
+						<p>10. 网站中含有或涉嫌散播：病毒、木马、恶意代码等行为</p>
+						<p>11. 侵犯他人合法权利类</p>
+						<p>12. 其他上级主管部门下发通知中所提到的违法信</p>
+						<br />
+						
+						<h2>被诈骗后的处理方法</h2>
+						<p>从公安部门了解到，报案需要被骗事主本人到公司或者个人住址所在地派出所进行报案。需要诈骗金额达到一定数额（盗窃案件500元以上、诈骗案件3000元以上、黑客攻击案件在7、8万元以上，具体金额看当时公安机关规定），公安机关才会受理。</p>
+						<p>如果您直接金额损失未达到立案数额，间接的经济损失（虚拟财产）达到了，您需要由司法局认定具有“司法鉴定资格”的会计师事务所出具定损评估报告。</p>
+						<p>报案相关材料：公司执照副本复印件，法定代表人身份证复印件，法定代表人身份证明书，介绍信，报案人的身份证复印件（具体内容建议咨询公安机关）</p>
+						<p>另外，您也可以联系相关政府部门进行举报，官方举报机构。</p>
+
+						
+							<br />
+							
+							<h3 class="h4">如何减少或杜绝违法信息出现</h3>
+
+						<p>为了减少和杜绝网站出现违法信息，您可以参考一下方法：</p>
+						<p>1、如果网站开设了论坛、留言板等交互式内容，您可以自己拟定一个违法关键字库，对发帖人内容进行自动过滤，以此减少违法信息的进入。</p>
+
+						<p>2、可以设置24小时专人监控，做到内容实时监控，如果您的网站论坛等交互式网站无法做到专人监控，而且每天还产生大量的违法内容，建议您如果论坛不常用，最好自行关闭，以免给您网站带来负面影响。</p>
+
+						<p>3、为了限制类似发帖软件恶意灌水，您可以在发帖时，设置需要输入验证码发帖，也可以设置1分钟内或者更长时间禁止再次发言等等设置，从而有效的禁止短时间内恶意灌水。</p>
+
+						<p>4、定期检查网站代码，杜绝恶意代码出现。</p>
+
+						<p>以上方法希望能够帮助您减少或杜绝违法信息的滋生。</p>
+						
+						<h2>域名/网站业务被暂停服务的开通方法</h2>
+
+						<p>我们会电话通知您网站是否可以开通以及开通方法，如您不太清楚，也可以拨打万网客服热线400-600-8500进行咨询。具体方法如下：</p>
+						<p>1.自查、客户/权利人举报或投诉</p>
+						<p>1) 您需要按照要求清除干净违法信息，并承诺加强网站信息安全管理；</p>
+						<p>2) 登陆到万网的会员中心在线问题提交，问题类型请选择：业务问题—恢复主机及域名服务申请（违法信息关停类）；您也可以拨打400-600-8500由万网客服代为提交（如果您没有万网的直接会员ID建议直接拨打400-600-8500电话由万网客服代为提交）；</p>
+						<p>3) 收到开通申请后，承诺会在1个工作日内处理，并对审核无误的站点、域名恢复服务。</p>
+						<p>备注：万网在收到您的开通申请后，1个工作日内回复处理结果。</p>
+						<p>2.外部通知</p>
+						<p>如关闭和停权的指令为政府主管部门下达，明令通知处理的域名/网站，需要得到下达通知部门的明确许可后，方可恢复/开通，我们会在暂停服务时通知您具体开通方式</p>
+					</div>
+					
+				</div>
+				
+			</div>
+			<!-- Main Footer -->
+			<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+			<!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+			<!-- Or class "fixed" to  always fix the footer to the end of page -->
+			<footer class="main-footer sticky footer-type-1">
+				<include file="Main:foot" />
+			</footer>
+		</div>
+		
+			
+		<!-- start: Chat Section -->
+
+		<include file="Main:right" />
+
+		<!-- end: Chat Section -->
+		
+		
+	</div>
+
+
+
+
+
+
+	<!-- Bottom Scripts -->
+	<script src="__PUBLIC__/Admin/Js/bootstrap.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/TweenMax.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/resizeable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/joinable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-api.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-toggles.js"></script>
+	<script src="__PUBLIC__/Admin/Js/jquery-ui/jquery-ui.min.js"></script>
+
+
+	<!-- Imported scripts on this page -->
+	<script src="__PUBLIC__/Admin/Js/tocify/jquery.tocify.min.js"></script>
+
+
+	<!-- JavaScripts initializations and stuff -->
+	<script src="__PUBLIC__/Admin/Js/xenon-custom.js"></script>
+
+</body>
+</html>

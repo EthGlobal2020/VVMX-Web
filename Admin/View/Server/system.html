@@ -1,0 +1,335 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Language" content="zh-cn">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Xenon Boostrap Admin Panel" />
+	<meta name="author" content="" />
+	
+	<title>后台系统 HopeLook 2.2</title>
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/linecons/css/linecons.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/bootstrap.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-core.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-forms.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-components.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-skins.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/custom.css">
+
+	<script src="__PUBLIC__/Admin/Js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="__PUBLIC__/Ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/Ueditor/ueditor.all.min.js"> </script>
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin/Js/html5shiv.min.js"></script>
+		<script src="__PUBLIC__/Admin/Js/respond.min.js"></script>
+	<![endif]-->
+	<notempty name="model">
+		<script>
+			$(document).ready(function(){
+				jQuery('#modal-6').modal('show', {backdrop: 'static'});
+				<if condition="$model eq 4">
+					setTimeout(function(){
+						$('#modal-6').modal("hide");
+					},1000); 				
+				</if>				
+			});
+		</script>
+	</notempty>	
+	
+</head>
+<body class="page-body">
+
+	<div class="settings-pane">
+		<include file="Main:top" />		
+	</div>
+	
+	<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+			
+		<!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
+		<!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
+		<!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
+		<div class="sidebar-menu toggle-others fixed collapsed">
+			
+			<div class="sidebar-menu-inner">	
+				<include file="Main:left" />						
+			</div>
+			
+		</div>
+		
+		<div class="main-content">
+					
+			<!-- User Info, Notifications and Menu Bar -->
+			<include file="Main:title" />
+			<div class="page-title">
+				
+				<div class="title-env">
+					<h1 class="title">交易中心设置</h1>
+					<p class="description">System Set</p>
+				</div>
+				
+					<div class="breadcrumb-env">
+					
+								<ol class="breadcrumb bc-1">
+									<li>
+							<a href="{:U('Admin/Main/index')}"><i class="fa-home"></i>首页</a>
+						</li>
+								<li>
+						
+										<a href="javascript:;">网站设置</a>
+								</li>
+							<li class="active">
+						
+										<strong>交易中心设置</strong>
+								</li>
+								</ol>
+								
+				</div>
+					
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">交易中心设置</h3>
+							<div class="panel-options">
+								<a href="#" data-toggle="panel">
+									<span class="collapse-icon">&ndash;</span>
+									<span class="expand-icon">+</span>
+								</a>
+								<a href="#" data-toggle="remove">
+									&times;
+								</a>
+							</div>
+						</div>
+						<div class="panel-body">
+							
+							<form action="{:U('Admin/Server/system')}" method="post" enctype="multipart/form-data" class="form-horizontal">
+								
+								<div class="form-group">
+									<label class="col-sm-2 control-label" ><if condition="$Think.config.DEFAULT_WEB_CENTER_SET_OPEN_BUY eq 1"><font color="green">购买开启</font><else/>购买开启</if></label>
+									<div class="col-sm-10">
+										<select name="DEFAULT_WEB_CENTER_SET_OPEN_BUY"  class="form-control">
+											<option value="0" <if condition="$Think.config.DEFAULT_WEB_CENTER_SET_OPEN_BUY eq 0">selected</if>>未开启</option>
+											<option value="1" <if condition="$Think.config.DEFAULT_WEB_CENTER_SET_OPEN_BUY eq 1">selected</if>>已开启</option>
+										</select>
+									</div>	
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" ><if condition="$Think.config.DEFAULT_WEB_CENTER_SET_OPEN_SELL eq 1"><font color="green">卖出开启</font><else/>卖出开启</if></label>
+									<div class="col-sm-10">
+										<select name="DEFAULT_WEB_CENTER_SET_OPEN_SELL"  class="form-control">
+											<option value="0" <if condition="$Think.config.DEFAULT_WEB_CENTER_SET_OPEN_SELL eq 0">selected</if>>未开启</option>
+											<option value="1" <if condition="$Think.config.DEFAULT_WEB_CENTER_SET_OPEN_SELL eq 1">selected</if>>已开启</option>
+										</select>
+									</div>	
+								</div>
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" >提现时手续费</label>
+									
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_CENTER_BUY_PRICE" placeholder="提现时手续费" value="{$Think.config.DEFAULT_WEB_CENTER_BUY_PRICE}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" >最小提现额</label>
+									
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_CENTER_OUT_PRICE" placeholder="最小提现额" value="{$Think.config.DEFAULT_WEB_CENTER_OUT_PRICE}">
+									</div>
+								</div>									
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" >DGC 购买时 数量</label>
+									
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_CENTER_DGC_NEW_NUMBER" placeholder="DGC 购买时 数量" value="{$Think.config.DEFAULT_WEB_CENTER_DGC_NEW_NUMBER}">
+									</div>
+								</div>																
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" >买入 DGC 行情</label>
+									
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_CENTER_BUY_DGC" placeholder="买入 DGC 行情" value="{$Think.config.DEFAULT_WEB_CENTER_BUY_DGC}">
+									</div>
+								</div>																
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" >DGC 行情</label>
+									
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_CENTER_DGC" placeholder="DGC 行情" value="{$Think.config.DEFAULT_WEB_CENTER_DGC}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" >DGC 交易量</label>
+									
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_CENTER_DGC_NUMBER" placeholder="DGC 交易量" value="{$Think.config.DEFAULT_WEB_CENTER_DGC_NUMBER}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" >BTC 行情</label>
+									
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_CENTER_BTC" placeholder="DGC 行情" value="{$Think.config.DEFAULT_WEB_CENTER_BTC}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" >BTC 交易量</label>
+									
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_CENTER_BTC_NUMBER" placeholder="DGC 交易量" value="{$Think.config.DEFAULT_WEB_CENTER_BTC_NUMBER}">
+									</div>
+								</div>								
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" >USD/USD 汇率</label>
+									
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_CENTER_DGC_USD_TO_USD" placeholder="DGC 购买时 数量" value="{$Think.config.DEFAULT_WEB_CENTER_DGC_USD_TO_USD}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" >USD/KRW 汇率</label>
+									
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_CENTER_DGC_USD_TO_KRW" placeholder="DGC 购买时 数量" value="{$Think.config.DEFAULT_WEB_CENTER_DGC_USD_TO_KRW}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" >USD/CNY 汇率</label>
+									
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_CENTER_DGC_USD_TO_CNY" placeholder="DGC 购买时 数量" value="{$Think.config.DEFAULT_WEB_CENTER_DGC_USD_TO_CNY}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" >USD/JPY 汇率</label>
+									
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_CENTER_DGC_USD_TO_JPY" placeholder="DGC 购买时 数量" value="{$Think.config.DEFAULT_WEB_CENTER_DGC_USD_TO_JPY}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" >USD/EUR 汇率</label>
+									
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_CENTER_DGC_USD_TO_EUR" placeholder="DGC 购买时 数量" value="{$Think.config.DEFAULT_WEB_CENTER_DGC_USD_TO_EUR}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" >USD/PHP 汇率</label>
+									
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_CENTER_DGC_USD_TO_PHP" placeholder="DGC 购买时 数量" value="{$Think.config.DEFAULT_WEB_CENTER_DGC_USD_TO_PHP}">
+									</div>
+								</div>	
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" ><if condition="$Think.config.DEFAULT_WEB_CENTER_SET_OPEN eq 1"><font color="green">公告开启</font><else/>公告开启</if></label>
+									<div class="col-sm-10">
+										<select name="DEFAULT_WEB_CENTER_SET_OPEN"  class="form-control">
+											<option value="0" <if condition="$Think.config.DEFAULT_WEB_CENTER_SET_OPEN eq 0">selected</if>>未开启</option>
+											<option value="1" <if condition="$Think.config.DEFAULT_WEB_CENTER_SET_OPEN eq 1">selected</if>>已开启</option>
+										</select>
+									</div>	
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" >提示信息</label>
+									
+									<div class="col-sm-10">
+										<!--<textarea class="form-control autogrow" name="DEFAULT_WEB_CENTER_NOTICE" placeholder="公告内容" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 356px;">{$Think.config.DEFAULT_WEB_CENTER_NOTICE}</textarea>-->
+										<script id="editor" name="DEFAULT_WEB_CENTER_NOTICE" type="text/plain" style="width:100%;height:300px;">{$Think.config.DEFAULT_WEB_CENTER_NOTICE|htmlspecialchars_decode}</script>
+									</div>
+								</div>								
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label"></label>
+									<div class="col-sm-10">
+										<input type="submit" class="btn btn-success" value="提交">
+										<button type="reset" class="btn btn-white">重置</button>
+									</div>
+								</div>
+							</form>
+							
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<!-- Main Footer -->
+			<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+			<!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+			<!-- Or class "fixed" to  always fix the footer to the end of page -->
+			<footer class="main-footer sticky footer-type-1">			
+				<include file="Main:foot" />			
+			</footer>
+		</div>
+		
+			
+		<!-- start: Chat Section -->
+		<include file="Main:right" />
+		<!-- end: Chat Section -->
+		
+		
+	</div>
+	
+	
+	<!-- Modal 6 (Long Modal)-->
+	<div class="modal fade" id="modal-6">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<if condition="$model eq 4">
+					<div>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4>
+							<font color="#2c2e2f"><strong>操作成功</strong></font>
+						</h4>
+					</div>					
+				<elseif condition="$model eq 3"/>
+					<div>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4>
+							<font color="red"><strong>操作失败！</strong></font>
+						</h4>
+					</div>
+				<else/>
+					<div>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4>
+							<font color="red"><strong>未知错误！</strong></font>
+						</h4>
+					</div>						
+				</if>
+			</div>
+		</div>
+	</div>	
+	<!-- Modal 6 (Long Modal)-->	
+
+
+
+	<!-- Bottom Scripts -->
+	<script src="__PUBLIC__/Admin/Js/bootstrap.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/TweenMax.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/resizeable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/joinable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-api.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-toggles.js"></script>
+
+
+	<!-- JavaScripts initializations and stuff -->
+	<script src="__PUBLIC__/Admin/Js/xenon-custom.js"></script>
+	<script type="text/javascript">
+
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var ue = UE.getEditor('editor');
+	</script>
+</body>
+</html>

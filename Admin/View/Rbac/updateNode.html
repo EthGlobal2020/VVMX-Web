@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Language" content="zh-cn">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Xenon Boostrap Admin Panel" />
+	<meta name="author" content="" />
+
+	<title>后台管理系统</title>
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/linecons/css/linecons.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/bootstrap.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-core.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-forms.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-components.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-skins.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/custom.css">
+
+	<script src="__PUBLIC__/Admin/Js/jquery-1.11.1.min.js"></script>
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	<script src="__PUBLIC__/Admin/Js/html5shiv.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/respond.min.js"></script>
+	<![endif]-->
+
+
+</head>
+<body class="page-body">
+
+<div class="settings-pane">
+	<include file="Main:top" />
+</div>
+<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+
+	<!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
+	<!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
+	<!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
+	<div class="sidebar-menu toggle-others fixed collapsed">
+
+		<div class="sidebar-menu-inner">
+			<include file="Main:left" />
+		</div>
+
+	</div>
+
+	<div class="main-content">
+
+		<!-- User Info, Notifications and Menu Bar -->
+		<include file="Main:title" />
+		<div class="page-title">
+
+			<div class="title-env">
+
+					<h1 class="title">修改角色</h1>
+				<p class="description">会员,指某些团体或组织的成员</p>
+			</div>
+
+			<div class="breadcrumb-env">
+
+				<ol class="breadcrumb bc-1">
+					<li>
+						<a href="{:U('Admin/Main/index')}"><i class="fa-home"></i>首页</a>
+					</li>
+					<li>
+
+						<a href="javascript:;">权限管理</a>
+					</li>
+					<li class="active">
+							<strong>修改角色</strong>
+
+					</li>
+				</ol>
+
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+							<h3 class="panel-title">修改角色</h3>
+						<div class="panel-options">
+							<a href="#" data-toggle="panel">
+								<span class="collapse-icon">&ndash;</span>
+								<span class="expand-icon">+</span>
+							</a>
+							<a href="#" data-toggle="remove">
+								&times;
+							</a>
+						</div>
+					</div>
+					<div class="panel-body">
+
+						<form role="form" action="{:U('Admin/Rbac/updateNode')}" method="post" enctype="multipart/form-data" class="form-horizontal">
+
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="field-1">{$type}名称：</label>
+
+								<div class="col-sm-10">
+									<input type="text" name="name" value="{$node['name']}" id="name">&nbsp;<font color="red" id="nameMsg">*</font>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="field-1">{$type}描述：</label>
+
+								<div class="col-sm-10">
+									<input type="text" name="title" value="{$node['title']}" id="title">&nbsp;<font color="red" id="titleMsg">*</font>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="field-1">排序</label>
+
+								<div class="col-sm-10">
+									<input type="text" name="sort" id="sort"  value="{$node['sort']}" >&nbsp;<font color="red" id="sortMsg">*</font>
+								</div>
+							</div>
+							<div class="form-group-separator"></div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="field-1">是否开启</label>
+
+								<div class="col-sm-10">
+									<p>
+										<label class="radio-inline">
+											<input type="radio" name="status" value="1" <eq name="node['status']" value="1">checked</eq>>
+											开启
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="status" value="2"  <eq name="node['status']" value="2">checked</eq>>
+											不开启
+										</label>
+									</p>
+								</div>
+							</div>
+							<div class="form-group-separator"></div>
+
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="field-11"></label>
+								<div class="col-sm-10">
+									<input type="hidden" name="id" value="{$node['id']}">
+									<input type="submit" class="btn btn-success" value="提交">
+									<button type="reset" class="btn btn-white">重置</button>
+								</div>
+							</div>
+						</form>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Main Footer -->
+		<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+		<!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+		<!-- Or class "fixed" to  always fix the footer to the end of page -->
+		<footer class="main-footer sticky footer-type-1">
+			<include file="Main:foot" />
+		</footer>
+	</div>
+
+
+	<!-- start: Chat Section -->
+	<include file="Main:right" />
+	<!-- end: Chat Section -->
+
+
+</div>
+
+
+
+
+
+
+<!-- Bottom Scripts -->
+<script src="__PUBLIC__/Admin/Js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/Admin/Js/TweenMax.min.js"></script>
+<script src="__PUBLIC__/Admin/Js/resizeable.js"></script>
+<script src="__PUBLIC__/Admin/Js/joinable.js"></script>
+<script src="__PUBLIC__/Admin/Js/xenon-api.js"></script>
+<script src="__PUBLIC__/Admin/Js/xenon-toggles.js"></script>
+
+
+<!-- JavaScripts initializations and stuff -->
+<script src="__PUBLIC__/Admin/Js/xenon-custom.js"></script>
+
+</body>
+</html>

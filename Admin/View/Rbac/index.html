@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="UTF-8">
+<meta name="language" content="en">
+<meta name="renderer" content="webkit">
+<link href="__PUBLIC__/Admin/Css/page.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="__PUBLIC__/Public/Css/public.css" />
+<script type="text/javascript" src="__PUBLIC__/Public/Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/Js/script.js"></script>
+<title>会游宝--旅行社管理系统</title>
+</head>
+
+<body>
+<div id="header">
+  <div id="content">
+    <div class="left">
+      <div class="logo"><a href="{:U('Admin/Main/index')}"><img src="__PUBLIC__/Admin/Images/logo.jpg" width="198" height="98"></a></div>
+      <ul>
+			<include file="Main:menu"/>
+      </ul>
+    </div>
+    <div class="right"> 
+		<!--登录信息开始-->
+		<div class="headerR">{$data['CompanyName']}&nbsp;&nbsp;&nbsp;&nbsp;最近一次登录时间&nbsp;{$data['LoginTime']}</div>
+		<!--登录信息结束--> 
+		<!--线路管理开始-->
+		<div class="product">
+			<div class="title">
+				权限管理	
+			</div>
+		</div>
+		<!--线路管理结束--> 
+		<!--线路列表开始-->
+		<div class="info_p">
+			<table class='table' style="margin-top:10px;">
+				<tr>
+					<th>ID</th> 
+					<th>用户名称</th> 
+					<th>上一次登录时间</th> 
+					<th>上一次登录ip</th> 			
+					<th>用户所属别组</th> 
+					<th>操作</th> 
+				</tr>
+				<foreach name='user' item='v'>
+				<tr>
+					<td>{$v.ID}</td>
+					<td>{$v.UserName}</td>
+					<td>{$v.LoginTime|date='y-m-d H:i',###}</td>
+					<td>{$v.LoginIP}</td>
+					<td>
+						<if condition = '$v["UserName"] eq C("RBAC_SUPERADMIN")'>
+							超级管理员
+						<else/>
+						<ul>
+							<foreach name='v.role' item='value'>
+								<li>{$value.name}({$value.remark})</li> 
+							</foreach>
+						</ul>
+						</if>
+					</td>
+					<td align="center">
+						<a href="{:U('Admin/Rbac/updateUser',array('id'=>$v['ID']))}">修改</a>&nbsp;|&nbsp;<a href="{:U('Admin/Rbac/deleteUser',array('id'=>$v['ID']))}" onclick="return confirm('是否删除？')">删除</a>
+					</td>				
+				</tr>
+				</foreach>
+			</table>	
+		</div>
+		<!--线路列表结束-->
+    </div>
+  </div>
+</div>
+</body>
+</html>

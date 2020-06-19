@@ -1,0 +1,325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Language" content="zh-cn">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Xenon Boostrap Admin Panel" />
+	<meta name="author" content="" />
+	
+	<title>后台系统 HopeLook 2.2</title>
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/linecons/css/linecons.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/bootstrap.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-core.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-forms.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-components.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-skins.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/custom.css">
+
+	<script src="__PUBLIC__/Admin/Js/jquery-1.11.1.min.js"></script>
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin/Js/html5shiv.min.js"></script>
+		<script src="__PUBLIC__/Admin/Js/respond.min.js"></script>
+	<![endif]-->
+	<notempty name="model">
+		<script>
+			$(document).ready(function(){
+				jQuery('#modal-6').modal('show', {backdrop: 'static'});
+				<if condition="$model eq 4">
+					setTimeout(function(){
+						$('#modal-6').modal("hide");
+					},1000); 				
+				</if>				
+			});
+		</script>
+	</notempty>	
+	
+</head>
+<body class="page-body">
+
+	<div class="settings-pane">
+		<include file="Main:top" />		
+	</div>
+	
+	<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+			
+		<!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
+		<!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
+		<!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
+		<div class="sidebar-menu toggle-others fixed collapsed">
+			
+			<div class="sidebar-menu-inner">	
+				<include file="Main:left" />						
+			</div>
+			
+		</div>
+		
+		<div class="main-content">
+					
+			<!-- User Info, Notifications and Menu Bar -->
+			<include file="Main:title" />
+			<div class="page-title">
+				
+				<div class="title-env">
+					<h1 class="title">短信接口设置</h1>
+					<p class="description">Config Set</p>
+				</div>
+				
+					<div class="breadcrumb-env">
+					
+								<ol class="breadcrumb bc-1">
+									<li>
+							<a href="{:U('Admin/Main/index')}"><i class="fa-home"></i>首页</a>
+						</li>
+								<li>
+						
+										<a href="javascript:;">网站设置</a>
+								</li>
+							<li class="active">
+						
+										<strong>短信接口设置</strong>
+								</li>
+								</ol>
+								
+				</div>
+					
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">短信接口设置</h3>
+							<div class="panel-options">
+								<a href="#" data-toggle="panel">
+									<span class="collapse-icon">&ndash;</span>
+									<span class="expand-icon">+</span>
+								</a>
+								<a href="#" data-toggle="remove">
+									&times;
+								</a>
+							</div>
+						</div>
+						<div class="panel-body">
+							
+							<form action="{:U('Admin/Config/sms')}" method="post" enctype="multipart/form-data" class="form-horizontal">
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label" >短信接口请求地址</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control text-left" name="DEFAULT_WEB_SMS_URL" placeholder="短信接口请求地址" value="{$Think.config.DEFAULT_WEB_SMS_URL}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" >短信接口帐号</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control text-left" name="DEFAULT_WEB_SMS_ACCOUNT" placeholder="短信接口帐号" value="{$Think.config.DEFAULT_WEB_SMS_ACCOUNT}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">通道</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_SMS_PORT" placeholder="通道" value="{$Think.config.DEFAULT_WEB_SMS_PORT}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">短信接口密钥</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_SMS_KEY" placeholder="短信接口KEY" value="{$Think.config.DEFAULT_WEB_SMS_KEY}">
+									</div>
+								</div>
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">短信验证码位数</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_SMS_NUMBER" placeholder="短信位数" value="{$Think.config.DEFAULT_WEB_SMS_NUMBER}">
+									</div>
+								</div>
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">短信验证码提示语(中文)</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_SMS_REMARK" placeholder="短信提示语" value="{$Think.config.DEFAULT_WEB_SMS_REMARK}">
+									</div>
+								</div>
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">买家短信提示语(中文)</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_SMS_BUY" placeholder="买家短信提示语" value="{$Think.config.DEFAULT_WEB_SMS_BUY}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">卖家短信提示语(中文)</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_SMS_SELL" placeholder="卖家短信提示语" value="{$Think.config.DEFAULT_WEB_SMS_SELL}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">用户找回短信提示语(中文)</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_SMS_FIND" placeholder="用户找回短信提示语" value="{$Think.config.DEFAULT_WEB_SMS_FIND}">
+									</div>
+								</div>
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">短信验证码提示语(英文)</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_SMS_REMARK_EN" placeholder="短信提示语" value="{$Think.config.DEFAULT_WEB_SMS_REMARK_EN}">
+									</div>
+								</div>
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">买家短信提示语(英文)</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_SMS_BUY_EN" placeholder="买家短信提示语" value="{$Think.config.DEFAULT_WEB_SMS_BUY_EN}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">卖家短信提示语(英文)</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_SMS_SELL_EN" placeholder="卖家短信提示语" value="{$Think.config.DEFAULT_WEB_SMS_SELL_EN}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">用户找回短信提示语(英文)</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_SMS_FIND_EN" placeholder="用户找回短信提示语" value="{$Think.config.DEFAULT_WEB_SMS_FIND_EN}">
+									</div>
+								</div>
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">短信验证码提示语(西班牙)</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_SMS_REMARK_SE" placeholder="短信提示语" value="{$Think.config.DEFAULT_WEB_SMS_REMARK_SE}">
+									</div>
+								</div>
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">买家短信提示语(西班牙)</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_SMS_BUY_SE" placeholder="买家短信提示语" value="{$Think.config.DEFAULT_WEB_SMS_BUY_SE}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">卖家短信提示语(西班牙)</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_SMS_SELL_SE" placeholder="卖家短信提示语" value="{$Think.config.DEFAULT_WEB_SMS_SELL_SE}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">用户找回短信提示语(西班牙)</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="DEFAULT_WEB_SMS_FIND_SE" placeholder="用户找回短信提示语" value="{$Think.config.DEFAULT_WEB_SMS_FIND_SE}">
+									</div>
+								</div>
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">测试</label>
+									<div class="col-sm-4">
+										<input type="text" class="form-control input-sm" name="telephone" placeholder="测试手机号" value="">				
+									</div>
+									<div class="col-sm-6">
+										<button type="button" class="btn" id="test">测试</button>	
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">测试内容</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control input-sm" name="remark" placeholder="测试内容" value="接口测试">				
+									</div>
+								</div>
+								<div class="form-group-separator"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label"></label>
+									<div class="col-sm-10">
+										<input type="submit" class="btn btn-success" value="提交">
+										<button type="reset" class="btn btn-white">重置</button>
+									</div>
+								</div>
+							</form>
+							
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<!-- Main Footer -->
+			<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+			<!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+			<!-- Or class "fixed" to  always fix the footer to the end of page -->
+			<footer class="main-footer sticky footer-type-1">			
+				<include file="Main:foot" />			
+			</footer>
+		</div>
+		
+			
+		<!-- start: Chat Section -->
+		<include file="Main:right" />
+		<!-- end: Chat Section -->
+		
+		
+	</div>
+	
+	
+	<!-- Modal 6 (Long Modal)-->
+	<div class="modal fade" id="modal-6">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<if condition="$model eq 4">
+					<div>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4>
+							<font color="#2c2e2f"><strong>操作成功</strong></font>
+						</h4>
+					</div>					
+				<elseif condition="$model eq 3"/>
+					<div>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4>
+							<font color="red"><strong>操作失败！</strong></font>
+						</h4>
+					</div>
+				<else/>
+					<div>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4>
+							<font color="red"><strong>未知错误！</strong></font>
+						</h4>
+					</div>						
+				</if>
+			</div>
+		</div>
+	</div>	
+	<!-- Modal 6 (Long Modal)-->	
+
+
+
+	<!-- Bottom Scripts -->
+	<script src="__PUBLIC__/Admin/Js/bootstrap.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/TweenMax.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/resizeable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/joinable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-api.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-toggles.js"></script>
+
+
+	<!-- JavaScripts initializations and stuff -->
+	<script src="__PUBLIC__/Admin/Js/xenon-custom.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#test").click(function(){
+				$.post("{:U('Admin/Config/textSMS')}",{"telephone":$("input[name='telephone']").val(),"remark":$("input[name='remark']").val()},function(data){
+					if(data){					
+						alert(data);
+					}
+				});
+			});
+		});
+	</script>
+</body>
+</html>

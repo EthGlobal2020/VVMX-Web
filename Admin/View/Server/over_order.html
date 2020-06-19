@@ -1,0 +1,309 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Language" content="zh-cn">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Xenon Boostrap Admin Panel" />
+	<meta name="author" content="" />
+	
+	<title>后台管理系统</title>
+
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/linecons/css/linecons.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/bootstrap.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-core.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-forms.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-components.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-skins.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/custom.css">
+
+	<script src="__PUBLIC__/Admin/Js/jquery-1.11.1.min.js"></script>
+
+	<script src="__PUBLIC__/Admin/Js/jquery-1.11.1.min.js"></script>
+	<notempty name="model">
+		<script>
+			$(document).ready(function(){
+				jQuery('#modal-6').modal('show', {backdrop: 'static'});
+				<if condition="$model eq 4">
+						setTimeout(function(){
+							$('#modal-6').modal("hide");
+						},1000);
+				</if>
+			});
+		</script>
+	</notempty>
+	<script>
+		$(document).ready(function() {
+			$(".iswitch").click(function () {
+				location.href = $(this).parent().attr("href");
+			});
+		});
+	</script>	
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin/Js/html5shiv.min.js"></script>
+		<script src="__PUBLIC__/Admin/Js/respond.min.js"></script>
+	<![endif]-->
+	
+	
+</head>
+<body class="page-body">
+
+	<div class="settings-pane">
+		<include file="Main:top" />	
+	</div>	
+	<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+			
+		<!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
+		<!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
+		<!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
+		<div class="sidebar-menu toggle-others fixed collapsed">
+			
+			<div class="sidebar-menu-inner">	
+				<include file="Main:left" />
+			</div>
+			
+		</div>
+		
+		<div class="main-content">
+					
+			<!-- User Info, Notifications and Menu Bar -->
+			<include file="Main:title" />
+			<div class="page-title">
+				
+				<div class="title-env">
+					<h1 class="title">售出现金币管理</h1>
+					<p class="description">售出现金币管理</p>
+				</div>
+				
+					<div class="breadcrumb-env">
+					
+								<ol class="breadcrumb bc-1">
+									<li>
+							<a href="{:U('Admin/Main/index')}"><i class="fa-home"></i>首页</a>
+						</li>
+								<li>
+						
+										<a href="javascript:;">交易中心</a>
+								</li>
+							<li class="active">
+						
+										<strong>售出现金币管理</strong>
+								</li>
+								</ol>
+								
+				</div>
+					
+			</div>
+			<!-- Table Styles -->
+			<div class="row">
+				<div class="col-md-12">
+				
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">售出现金币管理</h3>
+							
+							<div class="panel-options">
+								<a href="#">
+									<i class="linecons-cog"></i>
+								</a>
+								
+								<a href="#" data-toggle="panel">
+									<span class="collapse-icon">&ndash;</span>
+									<span class="expand-icon">+</span>
+								</a>
+								
+								<a href="#" data-toggle="reload">
+									<i class="fa-rotate-right"></i>
+								</a>
+								
+								<a href="#" data-toggle="remove">
+									&times;
+								</a>
+							</div>
+						</div>
+
+						<div class="panel-body panel-border">
+						
+							<div class="row">
+								<div class="col-sm-12">
+								
+									<!-- Table Model 2 -->
+
+									<table class="table table-bordered table-striped">
+										<thead>
+										<tr>
+											<th>售出订单</th>
+											<th>买入订单</th>
+											<th>售出用户</th>
+											<th>买入用户</th>	
+											<th>金额(USD)</th>
+											<th>时间</th>
+											<th>状态</th>
+											<th>管理</th>
+										</tr>
+										</thead>
+										
+										<tbody>
+										<volist name="OrderInfo" id="mem" >
+											<tr>
+												<td>{$mem['order_number']}</td>
+												<td></td>
+												<td>{$mem['member_username']}</td>
+												<td></td>
+												<td>${$mem['price']} (￥{$mem['price']*$mem['price_turn']})</td>
+												<td>{$mem['addtime']}</td>
+												<td>
+													<if condition="$mem['status'] eq 0">待匹配</if>
+													<if condition="$mem['status'] eq 1">已匹配</if>
+													<if condition="$mem['status'] eq 2">买家已付款</if>
+													<if condition="$mem['status'] eq 3">已确认收款</if>
+													<if condition="$mem['status'] eq 4">完成</if>											
+												</td>
+												<td>
+													<empty name="mem['status']">
+													<a href="{:U('Admin/Server/touch',array('id'=>$mem['id'],'p'=>$p))}" class="btn btn-info btn-sm btn-icon icon-left">
+														匹配
+													</a>
+													<else/>
+													<if condition="$mem['status'] eq 3">
+													<a href="" class="btn btn-info btn-sm btn-icon icon-left">查看</a>
+													<else/>
+													<a href="{:U('Admin/Server/touch',array('id'=>$mem['id'],'p'=>$p))}" class="btn btn-info btn-sm btn-icon icon-left">
+														取消
+													</a>
+													</if>	
+													
+													</empty>
+													
+												</td>
+											</tr>
+										</volist>
+
+										</tbody>
+									</table>
+								
+								</div>
+							</div>
+						
+						</div>
+						
+					</div>
+					
+				</div>
+			</div>
+			<!-- Main Footer -->
+			<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+			<!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+			<!-- Or class "fixed" to  always fix the footer to the end of page -->
+			<footer class="main-footer sticky footer-type-1">			
+				<include file="Main:foot" />			
+			</footer>
+		</div>
+		
+			
+		<!-- start: Chat Section -->
+		<include file="Main:right" />
+		<!-- end: Chat Section -->
+		
+		
+	</div>
+	
+	
+	
+	<!-- Modal 6 (Long Modal)-->
+	<!-- <div class="modal fade" id="modal-6">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<if condition="$model eq 4">
+					<div>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4>
+							<font color="#2c2e2f"><strong>操作成功</strong></font>
+						</h4>
+					</div>
+					<elseif condition="$model eq 3"/>
+					<div>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4>
+							<font color="red"><strong>操作失败！</strong></font>
+						</h4>
+					</div>
+					<else/>
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title">
+								<if condition="$model eq 2">提现申请管理</if>
+							</h4>
+						</div>
+
+						<div class="modal-body">
+						
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label class="control-label">申请帐号</label>
+										<input value="{$username}" class="form-control" disabled="disabled">
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">申请金额</label>
+										<input value="{$price}" class="form-control" disabled="disabled">
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label">符合匹配列表</label>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-md-6" style="width:100%;">
+									<div class="form-group">
+										<table class="table table-bordered table-striped">
+											<tr><td>会员帐号</td><td>购买金额</td><td>申请时间</td><td>操作</td></tr>
+											
+											<volist name="server_buy_list" id="sbl">
+											<tr><td>{$sbl['member_username']}</td><td>{$sbl['price']}</td><td>{$sbl['addtime']}</td><td><a class="btn btn-info btn-sm btn-icon icon-left">匹配</a></td></tr>
+											</volist>
+										</table>
+									</div>
+								</div>
+							</div>
+							
+							<div class="modal-footer" style="border-top:none;">
+								<input type="hidden" name="p" value="{$p}">
+								<button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+							</div>
+							
+						</div>
+				</if>
+			</div>
+		</div>
+	</div> -->
+
+
+	<!-- Bottom Scripts -->
+	<script src="__PUBLIC__/Admin/Js/bootstrap.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/TweenMax.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/resizeable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/joinable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-api.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-toggles.js"></script>
+
+
+	<!-- JavaScripts initializations and stuff -->
+	<script src="__PUBLIC__/Admin/Js/xenon-custom.js"></script>
+
+</body>
+</html>

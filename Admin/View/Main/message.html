@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Language" content="zh-cn">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Xenon Boostrap Admin Panel" />
+	<meta name="author" content="" />
+	
+	<title>后台管理系统</title>
+
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/linecons/css/linecons.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/bootstrap.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-core.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-forms.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-components.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/xenon-skins.css">
+	<link rel="stylesheet" href="__PUBLIC__/Admin/Css/custom.css">
+
+	<script src="__PUBLIC__/Admin/Js/jquery-1.11.1.min.js"></script>
+	<notempty name="model">
+		<script>
+			$(document).ready(function(){
+				jQuery('#modal-6').modal('show', {backdrop: 'static'});
+				<if condition="$model eq 4">
+						setTimeout(function(){
+							$('#modal-6').modal("hide");
+						},1000);
+				</if>
+			});
+		</script>
+	</notempty>
+	<script>
+		$(document).ready(function(){
+			$(".img-responsive").click(function(){
+				$("#gallery-image-modal").modal('show');
+				$("#gallery-image-set").attr("src",$(this).attr("src"));
+			});
+			$(".iswitch").click(function () {
+				location.href = $(this).parent().attr("href");
+			});
+		});
+	</script>
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Admin/Js/html5shiv.min.js"></script>
+		<script src="__PUBLIC__/Admin/Js/respond.min.js"></script>
+	<![endif]-->
+	
+	
+</head>
+<body class="page-body">
+
+	<div class="settings-pane">
+		<include file="Main:top" />	
+	</div>	
+	<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+			
+		<!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
+		<!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
+		<!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
+		<div class="sidebar-menu toggle-others fixed collapsed">
+			
+			<div class="sidebar-menu-inner">	
+				<include file="Main:left" />
+			</div>
+			
+		</div>
+		
+		<div class="main-content">
+					
+			<!-- User Info, Notifications and Menu Bar -->
+			<include file="Main:title" />
+			<div class="page-title">
+				
+				<div class="title-env">
+					<h1 class="title">首页反馈管理</h1>
+					<p class="description">图片是指由图形、图像等构成的平面媒体。</p>
+				</div>
+				
+					<div class="breadcrumb-env">
+					
+								<ol class="breadcrumb bc-1">
+									<li>
+							<a href="{:U('Admin/Main/index')}"><i class="fa-home"></i>首页</a>
+						</li>
+								<li>
+						
+										<a href="javascript:;">首页反馈</a>
+								</li>
+							<li class="active">
+						
+										<strong>首页反馈</strong>
+								</li>
+								</ol>
+								
+				</div>
+					
+			</div>
+			<!-- Table Styles -->
+			<div class="row">
+				<div class="col-md-12">
+				
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">首页反馈</h3>
+							
+							<div class="panel-options">
+								
+								<a href="#" data-toggle="panel">
+									<span class="collapse-icon">&ndash;</span>
+									<span class="expand-icon">+</span>
+								</a>
+								
+								<a href="{:U('Admin/Main/message')}" data-toggle="reload">
+									<i class="fa-rotate-right"></i>
+								</a>
+								
+								<a href="#" data-toggle="remove">
+									&times;
+								</a>
+							</div>
+						</div>
+
+						<div class="panel-body panel-border">
+						
+							<div class="row">
+								<div class="col-sm-12">
+								
+									<!-- Table Model 2 -->
+									<!-- <strong>Table Model 2</strong> -->
+									<table class="table table-bordered table-striped" id="example-2">
+										<thead>
+										<tr>
+											<th>序号</th>											
+											<th>标题</th>
+											<th>邮箱</th>
+											<th>内容</th>
+											<th>添加时间</th>
+											<th>操作</th>
+										</tr>
+										</thead>
+
+										<tbody class="middle-align">
+
+										<volist name="MessageList" id="ne">
+											<tr>
+												<td>{$ne['id']}</td>										
+												<td><if condition="mb_strlen($ne['name'],'utf8') elt 10">{$ne['name']}<else/>{$ne['name']|mb_substr=0,10,'utf-8'}...</if></td>
+												<td>{$ne['email']}</td>
+												<td style="width:25%"><if condition="mb_strlen($ne['message'],'utf8') elt 15">{$ne['message']}<else/>{$ne['message']|mb_substr=0,15,'utf-8'}...</if></td>
+												<td>{$ne['addtime']}</td>	
+												<td>
+													<a href="{:U('Admin/Main/showMessage',array('id'=>$ne['id'],'p'=>$p))}" data-toggle="popover" data-trigger="hover" data-placement="top" data-original-title="查看" class="btn btn-danger btn-sm btn-icon icon-left">查看</a>
+												</td>
+											</tr>
+										</volist>
+
+										</tbody>
+									</table>
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="dataTables_info" ></div>
+										</div>
+										<div style="float:right;">
+											<div class="page">
+												{$page}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						
+						</div>
+						
+					</div>
+					
+				</div>
+			</div>
+
+			<!-- Main Footer -->
+			<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+			<!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+			<!-- Or class "fixed" to  always fix the footer to the end of page -->
+			<footer class="main-footer sticky footer-type-1">			
+				<include file="Main:foot" />			
+			</footer>
+		</div>
+		
+			
+		<!-- start: Chat Section -->
+		<include file="Main:right" />
+		<!-- end: Chat Section -->
+		
+		
+	</div>
+
+
+	<!-- Modal 6 (Long Modal)-->
+	<div class="modal fade" id="modal-6">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<if condition="$model eq 4">
+					<div>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4>
+							<font color="#2c2e2f"><strong>操作成功</strong></font>
+						</h4>
+					</div>
+					<elseif condition="$model eq 3"/>
+					<div>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4>
+							<font color="red"><strong>操作失败！</strong></font>
+						</h4>
+					</div>
+					<else/>
+					<form role="form" onsubmit="false" class="form-horizontal">
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="field-1">标题</label>
+
+							<div class="col-sm-10">
+								<input type="text" name="name" class="form-control" placeholder="标题" value="{$name}" readonly>
+							</div>
+						</div>
+
+						<div class="form-group-separator"></div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="field-1">邮箱</label>
+
+							<div class="col-sm-10">
+								<input type="text" name="email" class="form-control" placeholder="邮箱" value="{$email}" readonly>
+							</div>
+						</div>
+
+						<div class="form-group-separator"></div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="field-5">内容</label>
+
+							<div class="col-sm-10">
+								<textarea name="message" class="form-control" cols="8" readonly style="resize:none; width:100%; height:250px;">{$message}</textarea>
+							</div>
+						</div>
+
+						<div class="form-group-separator"></div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="field-11"></label>
+							<div class="col-sm-10">
+
+								<button type="button" class="btn btn-success" data-dismiss="modal">关闭</button>
+							</div>
+						</div>
+					</form>
+				</if>
+			</div>
+		</div>
+	</div>
+	<!-- Modal 6 (Long Modal)-->
+
+	<!-- Gallery Modal Image -->
+	<div class="modal fade" id="gallery-image-modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<div class="modal-gallery-image">
+					<img src="__PUBLIC__/Admin/Images/album-image-full.jpg" class="img-responsive" id="gallery-image-set"/>
+				</div>
+				<div class="modal-footer modal-gallery-top-controls">
+					<button type="button" class="btn btn-xs btn-white" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Bottom Scripts -->
+	<script src="__PUBLIC__/Admin/Js/bootstrap.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/TweenMax.min.js"></script>
+	<script src="__PUBLIC__/Admin/Js/resizeable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/joinable.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-api.js"></script>
+	<script src="__PUBLIC__/Admin/Js/xenon-toggles.js"></script>
+
+
+	<!-- JavaScripts initializations and stuff -->
+	<script src="__PUBLIC__/Admin/Js/xenon-custom.js"></script>
+
+</body>
+</html>
